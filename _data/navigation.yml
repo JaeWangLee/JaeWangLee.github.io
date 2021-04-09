@@ -1,0 +1,27 @@
+# main links
+main:
+  - title: "About"
+    url: https://jaewanglee.github.io/about/
+  - title: "Categories"
+    url: https://jaewanglee.github.io/categories/
+
+docs:
+  - title: Java
+    children:
+      - title: "Quick-Start Guide"
+        url: /
+
+  - title: Jsp
+    children:
+      - title: "Configuration"
+        url: /
+
+  - title: Content
+    children:
+      - title: "Working with Posts"
+        url: /
+
+  - title: Extras
+    children:
+      - title: "Stylesheets"
+        url: /
