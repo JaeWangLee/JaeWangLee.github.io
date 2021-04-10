@@ -1,11 +1,11 @@
 ---
-title: "이 블로그 설명서"
+title: "💁🏻‍♂️ About Me"
 permalink: /about/
 layout: single
 last_modified_at: 2021-03-26 13:08:20
 ---
 
-## 💁🏻‍♂️ About Me
+## 🙋🏻‍♂️ Introduction
   
 안녕하세요! 성실함이 무기인 `예비 개발자`, 이재왕입니다.  
 현재는 평범한 직장인이지만, 개발자의 꿈을 갖고 한걸음씩 나아가고 있습니다.  
