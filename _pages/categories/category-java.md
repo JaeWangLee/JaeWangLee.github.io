@@ -1,6 +1,6 @@
 ---
 title: "Java"
-layout: archive-single
+layout: categories
 permalink: /categories/Java
 author_profile: true
 sidebar_main: true
