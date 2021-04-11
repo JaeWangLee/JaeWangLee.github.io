@@ -1,0 +1,11 @@
+---
+title: "잡담"
+layout: archive
+permalink: categories/잡담
+author_profile: true
+sidebar_main: true
+---
+
+
+{% assign posts = site.categories.잡담 %}
+{% for post in posts %} {% include archive-single.html type=page.entries_layout %} {% endfor %}
