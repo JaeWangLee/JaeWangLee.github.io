@@ -1,6 +1,6 @@
 ---
 title: "잡담"
-layout: category
+layout: archive
 permalink: categories/잡담
 author_profile: true
 sidebar_main: true
