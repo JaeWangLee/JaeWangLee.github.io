@@ -78,7 +78,9 @@ web.xml파일에 context parameter를 기술한 후,
 ```
   
 Context를 불러오기때문에 getServletContext 메소드를 이용하여 데이터를 불러옵니다.  
+  
 [ServletEx]  
+  
 ```java
 protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
