@@ -15,5 +15,4 @@ posts = site.posts %} {% endif %} {% assign entries_layout = page.entries_layout
   {% for post in posts %} {% include archive-single.html type=entries_layout %}
   {% endfor %}
 </div>
-{% if page.sidebar_main %} {% include nav_list_main %} {% endif %} {% include
-paginator.html %}
+{% include paginator.html %}
