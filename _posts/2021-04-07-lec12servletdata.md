@@ -19,8 +19,7 @@ last_modified_at: 2021-04-07 20:36:20
 해당 서블릿 내에서만 공유하는 방법
 ![이미지](/assets/images/JSP&Servlet/실전JSP/12강/12강_1.png)
 web.xml파일에 init parameter를 기술한 후,  
----
-[web.xml]
+[web.xml]  
 ```xml
   <servlet>
   	<servlet-name>servletEx</servlet-name> 

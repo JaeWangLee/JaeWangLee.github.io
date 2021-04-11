@@ -2,7 +2,6 @@
 title: "💁🏻‍♂️ About Me"
 permalink: /about/
 layout: single
-modified_at: 2021-03-26 13:08:20
 ---
 
 ## Introduction 🙋🏻‍♂️
