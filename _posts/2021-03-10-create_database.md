@@ -4,7 +4,7 @@ excerpt: "Database 생성에 대해 araboza"
 toc: true
 toc_sticky: true
 categories:
-  - Database
+  - MySQL
 tags:
   - SQL
   - Mysql
