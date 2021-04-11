@@ -29,28 +29,28 @@
                 <!--category[1].size 로 해당 카테고리를 가진 글의 개수 표시--> 
                 {% for category in site.categories %}
                     {% if category[0] == "Java" %}
-                        <li><a href="/categories/java" class="">Java ({{category[1].size}})</a></li>
+                        <li><a href="/categories/Java" class="">Java ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
             <ul>
                 {% for category in site.categories %}
                     {% if category[0] == "JSP" %}
-                        <li><a href="/categories/jsp" class="">JSP ({{category[1].size}})</a></li>
+                        <li><a href="/categories/JSP" class="">JSP ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
             <ul>
                 {% for category in site.categories %}
                     {% if category[0] == "JDBC" %}
-                        <li><a href="/categories/jdbc" class="">JDBC ({{category[1].size}})</a></li>
+                        <li><a href="/categories/JDBC" class="">JDBC ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
             <ul>
                 {% for category in site.categories %}
                     {% if category[0] == "WEB" %}
-                        <li><a href="/categories/web" class="">WEB ({{category[1].size}})</a></li>
+                        <li><a href="/categories/WEB" class="">WEB ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
@@ -58,7 +58,7 @@
         <ul>
             {% for category in site.categories %}
                 {% if category[0] == "MySQL" %}
-                    <li><a href="/categories/sql" class="">MySQL ({{category[1].size}})</a></li>
+                    <li><a href="/categories/MySQL" class="">MySQL ({{category[1].size}})</a></li>
                 {% endif %}
             {% endfor %}
         </ul>
@@ -66,12 +66,12 @@
         <ul>
             {% for category in site.categories %}
                 {% if category[0] == "Programmers" %}
-                    <li><a href="/categories/programmers" class="">프로그래머스 ({{category[1].size}})</a></li>
+                    <li><a href="/categories/Programmers" class="">프로그래머스 ({{category[1].size}})</a></li>
                 {% endif %}
             {% endfor %}
             {% for category in site.categories %}
                 {% if category[0] == "Algorithm" %}
-                    <li><a href="/categories/algorithm" class="">알고리즘 ({{category[1].size}})</a></li>
+                    <li><a href="/categories/Algorithm" class="">알고리즘 ({{category[1].size}})</a></li>
                 {% endif %}
             {% endfor %}
         </ul>    
@@ -79,7 +79,7 @@
         <ul>
             {% for category in site.categories %}
                 {% if category[0] == "Markdown" %}
-                    <li><a href="/categories/markdown" class="">Markdown ({{category[1].size}})</a></li>
+                    <li><a href="/categories/Markdown" class="">Markdown ({{category[1].size}})</a></li>
                 {% endif %}
             {% endfor %}
         </ul>    
