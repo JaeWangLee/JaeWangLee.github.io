@@ -1,7 +1,7 @@
 ---
 title: "JDBC"
 layout: archive
-permalink: categories/JDBC
+permalink: /categories/JDBC
 author_profile: true
 sidebar_main: true
 ---

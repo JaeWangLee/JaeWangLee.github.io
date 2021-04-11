@@ -1,7 +1,7 @@
 ---
 title: "잡담"
 layout: archive
-permalink: categories/잡담
+permalink: /categories/잡담
 author_profile: true
 sidebar_main: true
 ---
