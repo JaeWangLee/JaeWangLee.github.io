@@ -275,6 +275,7 @@ defaults:
   - scope:
       path: ""
       type: docs
-    values:
+      values:
       sidebar:
-        nav: "docs"
+      nav: "docs"
+      sidebar_main: true
