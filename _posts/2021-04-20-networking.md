@@ -106,7 +106,7 @@ public class MainClassSocket{
   
 ![이미지](/assets/images/JAVA/network/nw5.png)  
   
-클라이언트 쪽
+### 클라이언트 Code
   
 ```java
 package testPjt;
@@ -165,7 +165,7 @@ public class ClientClass{
 }
 ```
   
-서버 쪽
+### 서버 Code
   
 ```java
 package testPjt;

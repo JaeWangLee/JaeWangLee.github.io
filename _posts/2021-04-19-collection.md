@@ -75,8 +75,8 @@ public class MainClass{
 ## 25-2. Map
 ![이미지](/assets/images/JAVA/Collections/col2.png)  
   
-key를 이용한다. key-value 구조.  
-key는 유일한 값.  
+key를 이용한다. 
+key-value 구조이며, key는 유일한 값이다.  
 코드로 확인해보자.  
   
 ```java

@@ -33,7 +33,7 @@ last_modified_at: 2021-04-19 23:00:20
   
 1byte 단위로 데이터를 읽어들인다.  
   
-**read()**  
+### read()  
 ```java
 public MainCalss001{
     public static void main(String[] args){
@@ -67,7 +67,7 @@ public MainCalss001{
 }
 ```
 
-**read(byte[])**  
+### read(byte[])  
 ```java
 public MainCalss002{
     public static void main(String[] args){
@@ -104,7 +104,7 @@ public MainCalss002{
 }  
   
 ```
-**write()**  
+### write()  
 ```java
 public MainCalss003{
     public static void main(String[] args){
@@ -135,7 +135,7 @@ public MainCalss003{
 }
 ```
 
-**write(byte[])**  
+### write(byte[])  
 ```java
 public MainCalss004{
     public static void main(String[] args){
@@ -203,12 +203,100 @@ public MainCalss005{
 ## 27-5. DataInputStream, DataOutputStream
 ![이미지](/assets/images/JAVA/inputoutput/io5.png)  
 왜냐면 byte단위는 사람이 보기 불편하기 때문에  
+  
 >문자열 단위로 받아들임.  
   
 ```java
+package lec27Pjt005;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class MainClass {
+	
+	public static void main(String[] args) {
+		
+		String fileName = "C:\\java\\pjt\\helloReader.txt";
+		
+		BufferedReader br = null;
+		FileReader fr = null;
+
+		try {
+
+			fr = new FileReader(fileName);
+			br = new BufferedReader(fr);
+
+			String strLine;
+
+			while ((strLine = br.readLine()) != null) {
+				System.out.println(strLine);
+			}
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+
+			try {
+				if (br != null) br.close();
+				if (fr != null) fr.close();
+			} catch (IOException ex) {
+				ex.printStackTrace();
+			}
+
+		}
+
+	}
+
+}
+
 ```
 ## 27-6. BufferedReader, BufferedWriter
 ![이미지](/assets/images/JAVA/inputoutput/io6.png)  
 ```java
+package lec27Pjt006;
+
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class MainClass {
+	
+	public static void main(String[] args) {
+		
+		String fileName = "C:\\java\\pjt\\helloWriter.txt";
+		
+		BufferedWriter bw = null;
+		FileWriter fw = null;
+
+		try {
+
+			String str = "Hello Java World~~\n";
+			str += "Hello C World~~\n";
+			str += "Hello C++ World~~\n";
+
+			fw = new FileWriter(fileName);
+			bw = new BufferedWriter(fw);
+			bw.write(str);
+
+			System.out.println("end");
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+
+			try {
+				if (bw != null) bw.close();
+				if (fw != null) fw.close();
+			} catch (IOException ex) {
+				ex.printStackTrace();
+			}
+
+		}
+
+	}
+
+}
+
 ```
 끝-!😋
