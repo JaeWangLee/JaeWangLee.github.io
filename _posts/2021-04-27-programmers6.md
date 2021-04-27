@@ -13,7 +13,7 @@ last_modified_at: 2021-04-27 11:11:20
 
 # 📚 같은 숫자는 싫어
   
-링크📎 : https://programmers.co.kr/learn/courses/30/lessons/12906#  
+링크📎 : <https://programmers.co.kr/learn/courses/30/lessons/12906#>  
 
 >난이도 ⭐️
   
