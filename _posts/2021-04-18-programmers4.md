@@ -1,5 +1,5 @@
 ---
-title: "[LV1] 두 정수 사이의 합"
+title: "[프로그래머스] [LV1] 두 정수 사이의 합"
 excerpt: "Java로 풀이"
 toc: true
 toc_sticky: true

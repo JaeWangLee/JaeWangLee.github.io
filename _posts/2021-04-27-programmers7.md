@@ -1,5 +1,5 @@
 ---
-title: "[LV1] 두 개 뽑아서 더하기"
+title: "[프로그래머스] [LV1] 두 개 뽑아서 더하기"
 excerpt: "Java로 풀이"
 toc: true
 toc_sticky: true

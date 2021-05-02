@@ -1,5 +1,5 @@
 ---
-title: "[LV1] 같은 숫자는 싫어"
+title: "[프로그래머스] [LV1] 같은 숫자는 싫어"
 excerpt: "Java로 풀이"
 toc: true
 toc_sticky: true
