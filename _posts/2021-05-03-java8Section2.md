@@ -47,11 +47,6 @@ last_modified_at: 2021-05-03 19:00:20
 ### 스태틱 메소드
 - 해당 타입 관련 헬퍼 또는 유틸리티 메소드를 제공할 때 인터페이스에 스태틱 메소드를 제공할 수 있다.
 
-참고
-●	https://docs.oracle.com/javase/tutorial/java/IandI/nogrow.html
-●	https://docs.oracle.com/javase/tutorial/java/IandI/defaultmethods.html
-
-
 ## 2.2. 자바 8 API의 기본 메소드와 스태틱 메소드
   
 자바 8에서 추가한 기본 메소드로 인한 API 변화
@@ -207,9 +202,108 @@ apple
 ```
   
 #### thenComparing()
-#### static reverseOrder() / naturalOrder()
-#### static nullsFirst() / nullsLast()
-#### static comparing()
+thenComparing을 사용하기에 앞서 Fruit Class를 정의한다.
+```java
+public class Fruit {
+    String name;
+    String color;
 
+    public Fruit(String name, String color) {
+        this.name = name;
+        this.color = color;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getColor() {
+        return color;
+    }
+}
+```
+String으로 이뤄졌던 Fruits List를 Fruit객체를 사용해 재정의한다.
+```java
+List<Fruit> fruits = new ArrayList<>();
+fruits.add(new Fruit("grape", "purple"));
+fruits.add(new Fruit("grape", "green"));
+fruits.add(new Fruit("apple", "red"));
+fruits.add(new Fruit("melon", "green"));
+fruits.add(new Fruit("banana", "yellow"));
+
+Collections.sort(fruits, Comparator.comparing(Fruit::getName)
+        .thenComparing(Comparator.comparing(Fruit::getColor)));
+
+fruits.forEach(fruit -> System.out.println(fruit.getName() + " : " + fruit.getColor()));
+```
+  
+[결과]
+```java
+apple : red
+banana : yellow
+grape : green
+grape : purple
+melon : green
+```
+
+> Comparator를 인자로 받는다.  
+> 복수개의 comparator 조건을 줄 수 있다.  
+  
+
+
+#### static reverseOrder() / naturalOrder()
+
+역순정렬
+```java
+Comparator<String> cmp = Collections.reverseOrder();
+Collections.sort(fruits, cmp);
+fruits.forEach(System.out::println);
+```
+
+정방향 정렬
+```java
+fruits.sort(Comparator.naturalOrder());
+fruits.forEach(System.out::println);
+```
+
+#### static nullsFirst() / nullsLast()
+아까 사용한 String List에서 Null 값을 임의로 넣어보겠습니다.  
+```java
+List<String> fruits = new ArrayList<>();
+fruits.add("banana");
+fruits.add("apple");
+fruits.add("grape");
+fruits.add(null);
+fruits.add("melon");
+
+fruits.sort(Comparator.nullsFirst(Comparator.naturalOrder()));
+fruits.forEach(System.out::println);
+```
+위와 같이 사용했을 때 맨 앞에 null값을 보내고 정렬
+
+```java
+null
+apple
+banana
+grape
+melon
+```
+
+```java
+fruits.sort(Comparator.nullsLast(Comparator.naturalOrder()));
+fruits.forEach(System.out::println);
+```
+반대로 맨 뒤로 보내고 정렬
+
+```java
+apple
+banana
+grape
+melon
+null
+```
+#### static comparing()
+java.lang.Comparable을 상속받는다.  
+정렬 키를 인자로 받는다.  
  
 끝-!
