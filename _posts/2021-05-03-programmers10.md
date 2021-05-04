@@ -11,7 +11,7 @@ tags:
 last_modified_at: 2021-05-03 20:15:20
 ---
 
-# 📚 음양 더하기
+# 📚 소수 만들기
   
 링크📎 : <https://programmers.co.kr/learn/courses/30/lessons/12977>  
 
