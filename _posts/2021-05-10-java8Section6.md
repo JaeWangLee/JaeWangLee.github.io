@@ -17,7 +17,7 @@ last_modified_at: 2021-05-10 21:15:20
 <span style="color:grey">[백기선님의 더 자바, Java 8]강의 내용을 정리한 자료입니다.</span>
   
 ## 6.1. 자바 Concurrent 프로그래밍 소개
-
+  
 **Concurrent 소프트웨어**
 동시에 여러 작업을 할 수 있는 소프트웨어  
 - 웹 브라우저로 유튜브를 보면서 키보드로 문서에 타이핑을 할 수 있다.  
@@ -82,9 +82,9 @@ thread.interrupt();
    - 그 에러가 발생했을 때 할 일은 코딩하기 나름. 종료 시킬 수도 있고 계속 하던 일 할 수도 있고.
 3. **다른 쓰레드 기다리기 (join)**
    - 다른 쓰레드가 끝날 때까지 기다린다.
-
+  
 ## 6.2. Executors
-
+  
 **고수준 (High-Level) Concurrency 프로그래밍**
 - 쓰레드를 만들고 관리하는 작업을 애플리케이션에서 분리.
 - 그런 기능을 Executors에게 위임.
@@ -157,10 +157,9 @@ ES 안에는 `BlockingQueue`가 존재한다.
   
 **Fork/Join 프레임워크**
 - ExecutorService의 구현체로 손쉽게 멀티 프로세서를 활용할 수 있게끔 도와준다.
-
-
+  
 ## 6.3. Callable과 Future
-
+  
 **Callable**
 - Runnable과 유사하지만 <u>작업의 결과를 받을 수 있다.</u>
   
@@ -253,39 +252,92 @@ Hello가 2초, Java가 3초, Keesun이 1초
 하나만 가져오면 끝내버림. Keesun이 출력  
   
 ## 6.4. CompletableFuture
-
-자바에서 비동기(Asynchronous) 프로그래밍을 가능케하는 인터페이스.
+  
+자바에서 <u>비동기(Asynchronous) 프로그래밍</u>을 가능케하는 인터페이스.
 - Future를 사용해서도 어느정도 가능했지만 하기 힘들 일들이 많았다.
-
-Future로는 하기 어렵던 작업들
+  
+**Future로는 하기 어렵던 작업들**
 - Future를 외부에서 완료 시킬 수 없다. 취소하거나, get()에 타임아웃을 설정할 수는 있다.
 - 블로킹 코드(get())를 사용하지 않고서는 작업이 끝났을 때 콜백을 실행할 수 없다.
 - 여러 Future를 조합할 수 없다, 예) Event 정보 가져온 다음 Event에 참석하는 회원 목록 가져오기
 - 예외 처리용 API를 제공하지 않는다.
-
-CompletableFuture
+  
+**CompletableFuture**
 - Implements Future
 - Implements CompletionStage
-
-비동기로 작업 실행하기
+  
+**비동기로 작업 실행하기**
 - 리턴값이 없는 경우: runAsync()
 - 리턴값이 있는 경우: supplyAsync()
 - 원하는 Executor(쓰레드풀)를 사용해서 실행할 수도 있다. (기본은 ForkJoinPool.commonPool())
-
-콜백 제공하기
+  
+**콜백 제공하기**
 - thenApply(Function): 리턴값을 받아서 다른 값으로 바꾸는 콜백
 - thenAccept(Consumer): 리턴값을 또 다른 작업을 처리하는 콜백 (리턴없이)
 - thenRun(Runnable): 리턴값 받지 다른 작업을 처리하는 콜백
 - 콜백 자체를 또 다른 쓰레드에서 실행할 수 있다.
-
-조합하기
+  
+**조합하기**
 - thenCompose(): 두 작업이 서로 이어서 실행하도록 조합
 - thenCombine(): 두 작업을 독립적으로 실행하고 둘 다 종료 했을 때 콜백 실행
 - allOf(): 여러 작업을 모두 실행하고 모든 작업 결과에 콜백 실행
 - anyOf(): 여러 작업 중에 가장 빨리 끝난 하나의 결과에 콜백 실행
-
-예외처리
+  
+**예외처리**
 - exeptionally(Function)
 - handle(BiFunction): 
+  
+```java
+CompletableFuture<String> future = new CompletableFuture <> ();
+future.complete("keesun"); // future의 기본값을 기선으로 정해주면서, 작업을 끝냄
+System.out.println(future.get()); // get을 완전히 없앨 수 없다. 
+
+CompletableFuture<String> future = CompletableFuture.completedFuture("keesun");
+System.out.println(future.get());
+
+//리턴이 없는 작업
+CompletableFuture<Void> future = CompletableFuture.runAsync(() -> {
+    System.out.println("Hello " + Thread.currentThread().getName());
+});
+future.get(); // 무슨일이 일어나려면 get이나 join을 해야하지~
+
+//리턴이 있는 작업
+CompletableFuture<String> future = CompletableFuture.supplyAsync(() -> {
+    System.out.println("Hello " + Thread.currentThread().getName());
+    return "Hello";
+});
+System.out.println(future.get()); 
+  
+// 콜백을 주는 방법
+// 1. thenApply
+CompletableFuture<String> future = CompletableFuture.supplyAsync(() -> {
+    System.out.println("Hello " + Thread.currentThread().getName());
+    return "Hello";
+}).thenApply((s) -> { // 우리가 받은 결과 값을 다른 타입으로 변경 하는 것
+    System.out.println(Thread.currentThread().getName());
+    return s.toUpperCase();
+});
+System.out.println(future.get()); 
+
+// 2. thenAccept
+CompletableFuture<String> future = CompletableFuture.supplyAsync(() -> {
+    System.out.println("Hello " + Thread.currentThread().getName());
+    return "Hello";
+}).thenAccept((s) -> { // 우리가 받은 결과 값을 다른 타입으로 변경 하는 것
+    System.out.println(Thread.currentThread().getName());
+    System.out.println(s.toUpperCase());
+});
+future.get();
+
+// 3. thenRun
+CompletableFuture<String> future = CompletableFuture.supplyAsync(() -> {
+    System.out.println("Hello " + Thread.currentThread().getName());
+    return "Hello";
+}).thenRun(() -> { // 우리가 받은 결과 값을 다른 타입으로 변경 하는 것
+    System.out.println(Thread.currentThread().getName());
+});
+future.get();
+```
+  
 
 끝-!
