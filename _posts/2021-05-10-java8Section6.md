@@ -337,6 +337,7 @@ CompletableFuture<String> future = CompletableFuture.supplyAsync(() -> {
     System.out.println(Thread.currentThread().getName());
 });
 future.get();
+
 ```
   
 
