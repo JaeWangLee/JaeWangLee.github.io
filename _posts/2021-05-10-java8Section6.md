@@ -201,6 +201,7 @@ String result = helloFuture.get();
 System.out.println(result);
 executorService.shutdown();
 ```
+  
 - 블록킹 콜이다.
 - 타임아웃(최대한으로 기다릴 시간)을 설정할 수 있다.
   
@@ -217,6 +218,7 @@ executorService.shutdown();
 **여러 작업 중에 하나라도 먼저 응답이 오면 끝내기 invokeAny()**
 - 동시에 실행한 작업 중에 제일 짧게 걸리는 작업 만큼 시간이 걸린다.
 - 블록킹 콜이다.
+  
 ```java
 Callable<String> hello = () -> {
     Thread.sleep(2000L);
@@ -337,6 +339,96 @@ CompletableFuture<String> future = CompletableFuture.supplyAsync(() -> {
     System.out.println(Thread.currentThread().getName());
 });
 future.get();
+
+// 조합하기
+// 1. thenCompose : 두 작업이 서로 이어서 실행하도록 조합
+public static void main(String[] args) throws ExecutionException, InterruptedException{
+    CompletableFuture<String> hello = CompletableFuture.supplyAsync(() -> {
+        System.out.println("Hello " + Thread.currentThread().getName());
+        return "Hello";
+    });
+
+    CompletableFuture<String> future = hello.thenCompose(App::getWorld);
+    System.out.println(future.get());
+}
+
+private static CompletableFuture<String> getWorld(String message){
+    return CompletableFuture.supplyAsync(() -> {
+        System.out.println("World " + Thread.currentThread().getName());
+        return "World";
+    });
+}
+// 출력 
+// Hello ForkJoinPool.commonPool-worker-3
+// World ForkJoinPool.commonPool-worker-5
+// Hello World
+
+
+public static void main(String[] args) throws ExecutionException, InterruptedException{
+    CompletableFuture<String> hello = CompletableFuture.supplyAsync(() -> {
+        System.out.println("Hello " + Thread.currentThread().getName());
+        return "Hello";
+    });
+
+    CompletableFuture<String> world = CompletableFuture.supplyAsync(() -> {
+        System.out.println("World " + Thread.currentThread().getName());
+        return "World";
+    });
+
+// 2. thenCombine() : 두 작업을 독립적으로 실행하고 둘 다 종료 했을 때 콜백 실행
+    CompletableFuture<String> = hello.thenCombine(world, (h, w) -> h + " " + w);
+    System.out.println(future.get());
+
+// 3. allOf(): 여러 작업을 모두 실행하고 모든 작업 결과에 콜백 실행
+// 모든 결과의 타입이 동일하지 않을 수도 있고, 
+// 어떤 결과는 에러가 낫을 수도 있다. 
+// 따라서 결과가 무의미 하고, 리턴이 중요함 
+
+    List<CompletableFuture<String>> futures = Arrays.asList(hello, world);
+    CompletableFuture[] futuresArray = futures.toArray(new CompletableFuture[futures.size()]);
+
+    CompletableFuture<List<String>> results = CompletableFuture.allOf(futuresArray)
+        .thenApply( v -> futures.stream()
+                .map(CompletableFuture::join)
+                .collect(Collectors.toList()));
+    
+    results.get().forEach(System.out::println);
+    
+// 4. anyOf(): 여러 작업 중에 가장 빨리 끝난 하나의 결과에 콜백 실행
+    CompletableFuture<Void> future = CompletableFuture.anyOf(hello, world).thenAccept(System.out::println);
+    future.get();
+
+// 예외처리
+// 1. exceptionally  
+    boolean throwError = false;
+    
+    CompletableFuture<String> hello = CompletableFuture.supplyAsync(() -> {
+        if(throwError){
+            throw new IllegalArgumentException();
+        }
+        System.out.println("Hello " + Thread.currentThread().getName());
+        return "Hello";
+    }).exceptionally(ex -> {
+        return "Error!";
+    });
+
+    System.out.println(hello.get());
+
+// 2. handle
+    CompletableFuture<String> hello = CompletableFuture.supplyAsync(() -> {
+        if(throwError){
+            throw new IllegalArgumentException();
+        }
+        System.out.println("Hello " + Thread.currentThread().getName());
+        return "Hello";
+    }).handle((resutl, ex) -> {
+        if(ex != null){
+            System.out.println(ex);
+            return "Error!";
+        }
+        return result;
+    });
+}
 
 ```
   
