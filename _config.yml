@@ -277,5 +277,6 @@ defaults:
       path: ""
       type: docs
     values:
+      sidebar_main: true
       sidebar:
         nav: "docs"
