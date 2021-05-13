@@ -1,5 +1,5 @@
 ---
-title: "[강의노트] 예외처리"
+title: "[자바 입문] 26. 예외처리"
 excerpt: "Java 예외처리에 대해 알아보자"
 toc: true
 toc_sticky: true

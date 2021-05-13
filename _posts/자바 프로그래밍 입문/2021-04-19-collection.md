@@ -1,5 +1,5 @@
 ---
-title: "[강의노트] Collections"
+title: "[자바 입문] 25. Collections"
 excerpt: "Java Collections에 대해 알아보자"
 toc: true
 toc_sticky: true

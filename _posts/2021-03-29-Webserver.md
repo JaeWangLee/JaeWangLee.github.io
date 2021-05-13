@@ -1,5 +1,5 @@
 ---
-title: "웹서버"
+title: "[웹 백엔드] 웹서버"
 excerpt: "웹서버/WAS에 대해 알아보자"
 toc: true
 toc_sticky: true
@@ -15,6 +15,8 @@ tags:
   - WAS
 last_modified_at: 2021-03-29 19:08:20
 ---
+<span style="color:grey">[웹 백엔드 - 강경미]내용입니다.</span>
+
 # 웹 서버
 
 ## 웹서버란?
