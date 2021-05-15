@@ -1,5 +1,5 @@
 ---
-title: "[프로그래머스] [LV1] 행렬의 덧셈"
+title: "[프로그래머스] [LV1] 약수의 갯수와 덧셈"
 excerpt: "Java로 풀이"
 toc: true
 toc_sticky: true
@@ -8,10 +8,10 @@ categories:
 tags:
   - codingtest
   - algorithm
-last_modified_at: 2021-05-15 20:00:20
+last_modified_at: 2021-05-15 19:10:20
 ---
 
-# 📚 모의고사
+# 📚 약수의 갯수와 덧셈
   
 링크📎 : <https://programmers.co.kr/learn/courses/30/lessons/12950?language=java>  
 

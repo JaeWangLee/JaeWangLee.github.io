@@ -11,7 +11,7 @@ tags:
 last_modified_at: 2021-05-14 21:15:20
 ---
 
-# 📚 모의고사
+# 📚 신규 아이디 추천
   
 링크📎 : <https://programmers.co.kr/learn/courses/30/lessons/72410>  
 

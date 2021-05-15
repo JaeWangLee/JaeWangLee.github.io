@@ -11,7 +11,7 @@ tags:
 last_modified_at: 2021-05-14 21:11:20
 ---
 
-# 📚 모의고사
+# 📚 로또의 최고 순위와 최저 순위
   
 링크📎 : <https://programmers.co.kr/learn/courses/30/lessons/77484>  
 
