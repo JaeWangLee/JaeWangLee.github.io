@@ -18,10 +18,11 @@ last_modified_at: 2021-03-29 13:08:20
 **생성자**란?  
 <u>오브젝트 생성과 함께 자동적으로 호출되는 특수한 메서드</u>를 말합니다.  
   
-그러므로 생성자를 기술하지 않는 경우, 인수가 없는 생성자가 자동으로 만들어집니다.  
+그러므로 생성자를 기술하지 않는 경우,  
+인수가 없는 생성자가 자동으로 만들어집니다.  
 이것을 **디폴트 생성자**라 합니다.  
 
-![이미지](/assets/images/JAVA/constructor/constructor1.png)
+![이미지](/assets/images/Java_클래스의_이해/4강/constructor1.png)
 
 ✔️**디폴트 생성자**의 특징 :  
 1. 메서드와 같은 모양이지만 반환형이 없다.  
@@ -29,19 +30,20 @@ last_modified_at: 2021-03-29 13:08:20
 
 ## 4-1. 생성자 오버로딩
 생성자는 가장 흔한 오버로딩의 대상입니다.🌝
-![이미지](/assets/images/JAVA/constructor/constructor2.png)
+![이미지](/assets/images/Java_클래스의_이해/4강/constructor2.png)
   
 만약, 개발자가 매개변수가 있는 생성자만 만든 경우, 디폴트 생성자를 호출하면 에러가 발생합니다.  
 이 경우 매개변수가 없는 디폴트 생성자를 호출하기 위해서는 디폴트 생성자도 같이 구현해 주어야 합니다.  
-![이미지](/assets/images/JAVA/constructor/constructor3.png)
+![이미지](/assets/images/Java_클래스의_이해/4강/constructor3.png)
 
 ## 4-2. 복제 생성자
 동일한 클래스의 오브젝트를 인수로 받아서,  
 대응하는 필드에 값을 대입하는 생성자를 **복제 생성자**라고 합니다.  
-![이미지](/assets/images/JAVA/constructor/constructor4.png)
+![이미지](/assets/images/Java_클래스의_이해/4강/constructor4.png)
 
 ## 4-3. 실습
-1. Book class의 생성자와 오버로딩
+  
+**Book class의 생성자와 오버로딩**  
 
 ```java
 package step1;
@@ -78,9 +80,9 @@ public class MyBook {
 	}
 }
 ```
-![이미지](/assets/images/JAVA/constructor/constructor5.png)
+![이미지](/assets/images/Java_클래스의_이해/4강/constructor5.png)
 
-2. 복제생성자를 이용한 객체 생성
+**복제생성자를 이용한 객체 생성**  
    
 ```java
 package step2;
@@ -110,7 +112,7 @@ public class MyBook {
 
 	public static void main(String[] args) {
 
-		//Book book1 = new Book(); // 디폴트 생성자가 없어서 에러 발
+		//Book book1 = new Book(); // 디폴트 생성자가 없어서 에러 발생
 		Book book1 = new Book("자바 클래스 기초", 10000);
 		book1.print();
 		
@@ -121,7 +123,7 @@ public class MyBook {
 }
 
 ```
-![이미지](/assets/images/JAVA/constructor/constructor6.png)
+![이미지](/assets/images/Java_클래스의_이해/4강/constructor6.png)
   
   
 끝-!😋
