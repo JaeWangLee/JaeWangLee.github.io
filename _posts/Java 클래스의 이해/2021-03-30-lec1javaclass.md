@@ -11,7 +11,7 @@ tags:
   - object
   - 객체지향
   - 인프런
-last_modified_at: 2021-03-30 08:08:20
+last_modified_at: 2021-03-29 08:08:20
 ---
 
 # 1. 클래스의 개념

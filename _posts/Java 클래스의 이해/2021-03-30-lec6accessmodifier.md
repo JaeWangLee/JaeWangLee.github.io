@@ -10,7 +10,7 @@ tags:
   - Access Modifier
   - 접근제한자
   - 객체지향
-last_modified_at: 2021-03-30 15:18:20
+last_modified_at: 2021-03-29 15:18:20
 ---
 
 # 6. 접근제한자

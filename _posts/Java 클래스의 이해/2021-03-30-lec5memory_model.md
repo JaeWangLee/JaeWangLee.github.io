@@ -9,7 +9,7 @@ tags:
   - java
   - Memory Model
   - 객체지향
-last_modified_at: 2021-03-30 13:18:20
+last_modified_at: 2021-03-29 13:18:20
 ---
 
 # 5. Java 메모리 모델

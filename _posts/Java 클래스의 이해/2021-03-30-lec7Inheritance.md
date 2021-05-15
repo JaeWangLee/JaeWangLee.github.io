@@ -10,7 +10,7 @@ tags:
   - 상속
   - inheritance
   - 객체지향
-last_modified_at: 2021-03-30 16:18:20
+last_modified_at: 2021-03-29 16:18:20
 ---
 
 # 7. 상속(Inheritance)
