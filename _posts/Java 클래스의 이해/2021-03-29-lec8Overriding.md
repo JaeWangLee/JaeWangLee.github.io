@@ -73,7 +73,7 @@ public class Pet {
 }
 ```
 
-![이미지](/assets/images/JAVA/inheritance/inheritance5.png)
+![이미지](/assets/images/Java_클래스의_이해/8강/overriding1.png)
   
   
 끝-!😁
