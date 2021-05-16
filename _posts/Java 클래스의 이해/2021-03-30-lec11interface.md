@@ -19,30 +19,30 @@ last_modified_at: 2021-03-30 17:00:20
 ## 11-1. 인터페이스의 정의  
 상속 관계가 아닌 클래스에 (추상 클래스처럼) 기능을 제공하는 구조입니다.  
 클래스와 비슷한 구조이지만,  
-<u>정의</u>와 <u>추상 메서드</u>만이 멤버가 될 수 있다는 점이 다릅니다.  
+<u>정의</u>와 <u>추상 메서드만이 멤버가 될 수 있다는 점</u>이 다릅니다.  
 클래스에서 인터페이스를 이용하도록 하게 하는 것을 **'인터페이스의 구현'** 이라고 하며,  
 인터페이스를 구현하기 위해서는 **implements**를 사용합니다.
 
-![이미지](/assets/images/JAVA/interface/interface1.png)
+![이미지](/assets/images/Java_클래스의_이해/11강/interface1.png)
 > 인터페이스는 항상 pulic으로 선언되어 있음.  
   
 인터페이스의 정의는 다음과 같이 수식자를 생략할 수 있습니다.
-![이미지](/assets/images/JAVA/interface/interface2.png)
+![이미지](/assets/images/Java_클래스의_이해/11강/interface2.png)
   
 또한 인터페이스는 몇 개라도 구현할 수 있습니다.
-![이미지](/assets/images/JAVA/interface/interface3.png)
+![이미지](/assets/images/Java_클래스의_이해/11강/interface3.png)
 
 ## 11-2. 인터페이스의 상속
 인터페이스도 클래스처럼 상속할 수 있습니다.
-![이미지](/assets/images/JAVA/interface/interface4.png)
+![이미지](/assets/images/Java_클래스의_이해/11강/interface4.png)
   
 복수의 인터페이스를 상속하여 새로운 인터페이스를 만들 수 있습니다.
-![이미지](/assets/images/JAVA/interface/interface5.png)
+![이미지](/assets/images/Java_클래스의_이해/11강/interface5.png)
   
 >**extends**와 **implements**  
-다른 클래스를 상속하고, 또한 인터페이스를 구현하는 경우에 다음과 같이 정의하며,  
-extends를 먼저 기술합니다.  
-![이미지](/assets/images/JAVA/interface/interface6.png)
+다른 클래스를 상속하고, 또한 인터페이스를 구현하는 경우  
+다음과 extends를 먼저 기술하여 정의합니다.  
+![이미지](/assets/images/Java_클래스의_이해/11강/interface6.png)
 
 ## 11-3. 실습
 
