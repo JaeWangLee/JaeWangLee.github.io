@@ -6,7 +6,7 @@ toc_sticky: true
 categories:
   - talk
 tags:
-  - Github
+  - 회고
 last_modified_at: 2021-05-16 13:36:20
 ---
 
