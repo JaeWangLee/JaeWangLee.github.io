@@ -1,13 +1,14 @@
 ---
-title: "블로그 첫 회고"
-excerpt: "출장 50일차에 작성하는 첫 회고.. "
+title: "[프로그래머스] [LV1] 폰켓몬"
+excerpt: "Java로 풀이"
 toc: true
 toc_sticky: true
 categories:
-  - talk
+  - Programmers
 tags:
-  - Rememberance
-last_modified_at: 2021-05-16 13:36:20
+  - codingtest
+  - algorithm
+last_modified_at: 2021-05-16 11:33:20
 ---
   
 # 블로그 첫 회고
