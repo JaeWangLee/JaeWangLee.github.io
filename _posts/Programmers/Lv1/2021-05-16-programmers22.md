@@ -21,8 +21,6 @@ last_modified_at: 2021-05-16 22:17:20
   
 ![이미지](/assets/images/Programmers/Lv1/22-1.png)
 ![이미지](/assets/images/Programmers/Lv1/22-2.png)
-![이미지](/assets/images/Programmers/Lv1/22-3.png)
-![이미지](/assets/images/Programmers/Lv1/22-4.png)
 
   
   
