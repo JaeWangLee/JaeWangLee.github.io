@@ -1,5 +1,5 @@
 ---
-title: "[프로그래머스] [LV1] 나누어 떨어지는 숫자 배열"
+title: "[프로그래머스] [LV1] 자연수 뒤집어 배열로 만들기"
 excerpt: "Java로 풀이"
 toc: true
 toc_sticky: true
@@ -8,19 +8,18 @@ categories:
 tags:
   - codingtest
   - algorithm
-last_modified_at: 2021-05-21 00:15:20
+last_modified_at: 2021-05-21 22:53:20
 ---
 
-# 📚 나누어 떨어지는 숫자 배열
+# 📚 자연수 뒤집어 배열로 만들기
   
-링크📎 : <https://programmers.co.kr/learn/courses/30/lessons/12910>  
+링크📎 : <https://programmers.co.kr/learn/courses/30/lessons/12932>  
 
 >난이도 ⭐️
   
 ## 📖 문제  
   
-![이미지](/assets/images/Programmers/Lv1/28-1.png)
-![이미지](/assets/images/Programmers/Lv1/28-2.png)
+![이미지](/assets/images/Programmers/Lv1/33-1.png)
   
 ## 📝 내 풀이  
   
@@ -28,25 +27,18 @@ last_modified_at: 2021-05-21 00:15:20
 import java.util.*;
 
 class Solution {
-    public int[] solution(int[] arr, int divisor) {
-        ArrayList<Integer> list = new ArrayList<Integer>();
+    public int[] solution(long n) {
+        ArrayList<Long> list = new ArrayList<Long>();
         
-        for(int i = 0; i < arr.length; i++)
-            if(arr[i] % divisor == 0) list.add(arr[i]);
+        while(n != 0){
+            list.add(n % 10);
+            n /= 10;
+        }
         
         int[] answer = new int[list.size()];
         
-        if(list.size() == 0) {
-            int[] wrong = {-1};
-            return wrong;
-        }
-        else{
-            for(int i = 0; i < answer.length; i++)
-                answer[i] = list.get(i);
-            
-            Arrays.sort(answer);
-        }
-        
+        for(int i = 0; i < list.size(); i++)
+            answer[i] = list.get(i).intValue();
         
         return answer;
     }
