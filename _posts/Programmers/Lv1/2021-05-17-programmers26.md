@@ -21,6 +21,7 @@ last_modified_at: 2021-05-17 21:30:20
   
 ![이미지](/assets/images/Programmers/Lv1/26-1.png)
 ![이미지](/assets/images/Programmers/Lv1/26-2.png)
+![이미지](/assets/images/Programmers/Lv1/26-3.png)
   
 ## 📝 내 풀이  
   
@@ -32,7 +33,7 @@ class Solution {
         int answer = 0;        
         ArrayList<Integer> threeNum = new ArrayList<Integer>();
         
-        while(n!=0){
+        while(n!=0){  
             threeNum.add(n%3);
             n /= 3;
         }

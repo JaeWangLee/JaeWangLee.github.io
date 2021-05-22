@@ -8,7 +8,7 @@ categories:
 tags:
   - codingtest
   - algorithm
-last_modified_at: 2021-05-21 00:15:20
+last_modified_at: 2021-05-22 00:15:20
 ---
 
 # 📚 핸드폰 번호 가리기

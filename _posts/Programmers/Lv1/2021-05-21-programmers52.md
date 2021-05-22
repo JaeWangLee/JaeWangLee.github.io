@@ -19,7 +19,7 @@ last_modified_at: 2021-05-21 00:15:20
   
 ## 📖 문제  
   
-![이미지](/assets/images/Programmers/Lv1/47-1.png)
+![이미지](/assets/images/Programmers/Lv1/52-1.png)
   
 ## 📝 내 풀이  
   
@@ -29,7 +29,7 @@ class Solution {
         long[] answer = new long[n];
         
         for(int i = 0; i < n; i++)
-            answer[i] = x * (i+1);
+            answer[i] = x * (long)(i+1);
         
         return answer;
     }
