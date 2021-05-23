@@ -87,33 +87,35 @@ import java.util.ArrayList;
 public class MainClass{
     public static void main (String[] args){
         
+        String str = "";
+        boolean b = false;
         // HashMap 객체 생성
         HashMap<Integer, String> map = new HashMap<Integer, String>();
         System.out.println("map.size() : " + map.size());
 
-        // 데이터 추가
+        // 데이터 추가__put()
         map.put(5, "Hello");
         map.put(6, "Java");
         map.put(7, "World");
-        System.out.println("map : " + map);
-        System.out.println("map.size() : " + map.size());
+        System.out.println("map : " + map);//5=Hello 의 형식으로 출력됨
+        System.out.println("map.size() : " + map.size()); // 사이즈느 3임
 
         map.put(8, "!!");
         System.out.println("map : " + map);
 
-        //데이터 교체
+        //데이터 교체__이미 있는 key값에 덮어쓰기
         map.put(6, "C"); // 키값은 중복 될 수 없기에 Java 삭제됨
         System.out.println("map : " + map);
 
-        //데이터 추출
+        //데이터 추출__get(key)를 통해 추출 가능함. key는 배열의 index의 역할과 동일
         str = map.get(5);
         System.out.println("map.get(5) : " + map);
         
-        //데이터 제거 
+        //데이터 제거__remove()는 값을 반환하지 않는다. 
         map.remove(8);
         System.out.println("map.remove(8) : " + map);
 
-        //특정 데이터 포함 유무
+        //특정 key의 데이터 포함 유무
         b = map.containsKey(7);
         System.out.println("map.containsKey(7) : " + b);
 
