@@ -35,7 +35,7 @@ public class MainClass{
 
         System.out.println("list.size : " + list.size());
 
-        //데이터 추가
+        //데이터 추가__add()
         list.add("Hello");
         list.add("Java");
         list.add("World");
@@ -48,21 +48,21 @@ public class MainClass{
         list.set(1,"C"); // 변경
         System.out.println("list : " + list);
 
-        //데이터 추출
+        //데이터 추출__get()
         String str = list.get(2);
         System.out.println("list.get(2) : " + str);
         System.out.println("list : " + list);
 
-        //데이터 제거 
-        str = list.remove(2);
+        //데이터 제거__remove()
+        str = list.remove(2); // 제거와 동시에 반환한다.
         System.out.println("list.remove(2) : " + str);
         System.out.println("list : " + list);
 
-        //데이터 전체 제거
+        //데이터 전체 제거__clear()
         list.clear();
         System.out.println("list : " + list);
 
-        //데이터 유무
+        //데이터 유무__isEmpty()
         boolean b = list.isEmpty();
         System.out.println("list.isEmpty() :" + b);
 
