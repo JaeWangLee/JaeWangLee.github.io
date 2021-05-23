@@ -18,7 +18,7 @@ last_modified_at: 2021-04-19 21:18:20
 <span style="color:grey">[자바 프로그래밍 입문 강좌 (renew ver.) - 초보부터 개발자 취업까지!!]내용입니다.</span>
 
 ## 25-1. List
-![이미지](/assets/images/JAVA/Collections/col1.png)  
+![이미지](/assets/images/Java_프로그래밍_입문/25강/col1.png)  
   
 코드로 확인해보자.  
   
@@ -73,7 +73,7 @@ public class MainClass{
 
 ```
 ## 25-2. Map
-![이미지](/assets/images/JAVA/Collections/col2.png)  
+![이미지](/assets/images/Java_프로그래밍_입문/25강/col2.png)  
   
 key를 이용한다. 
 key-value 구조이며, key는 유일한 값이다.  

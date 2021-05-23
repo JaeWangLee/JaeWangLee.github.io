@@ -18,7 +18,7 @@ last_modified_at: 2021-04-18 22:42:20
 <span style="color:grey">[자바 프로그래밍 입문 강좌 (renew ver.) - 초보부터 개발자 취업까지!!]내용입니다.</span>
 
 ## 24-1. String 객체와 메모리?
-![이미지](/assets/images/JAVA/Stringclass/sc1.png)
+![이미지](/assets/images/Java_프로그래밍_입문/24강/sc1.png)
 > 사실 메모리상에서는 클래스라기보다는 객체가 맞는 표현  
   
 **새로운 메모리 주소로 이사를 한 것**  
@@ -26,7 +26,7 @@ last_modified_at: 2021-04-18 22:42:20
 하지만 회수되기 이전까지는 존재하므로 메모리 효율에 나쁜 영향을 주게됩니다.  
   
  ## 24-2. StringBuffer, StringBuilder
-![이미지](/assets/images/JAVA/Stringclass/sc2.png)  
+![이미지](/assets/images/Java_프로그래밍_입문/24강/sc2.png)  
 **기존의 메모리 공간에 추가를 한 것**  
   
 **StringBuffer**는 Synchronize 기법을 사용하므로,  
@@ -79,5 +79,5 @@ public class MainClass{
 ```
   
 **결과**  
-![이미지](/assets/images/JAVA/Stringclass/sc3.png)  
+![이미지](/assets/images/Java_프로그래밍_입문/24강/sc3.png)  
 끝-!😋

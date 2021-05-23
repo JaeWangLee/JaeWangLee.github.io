@@ -19,17 +19,17 @@ last_modified_at: 2021-04-19 23:00:20
     
 ## 27-1. 입/출력 이란?
   
-![이미지](/assets/images/JAVA/inputoutput/io1.png)  
+![이미지](/assets/images/Java_프로그래밍_입문/27강/io1.png)  
   
 ## 27-2. 입/출력 기본 클래스
   
-![이미지](/assets/images/JAVA/inputoutput/io2.png)  
+![이미지](/assets/images/Java_프로그래밍_입문/27강/io2.png)  
   
 > InputStream과 OutputStream은 추상 클래스임.  
   
 ## 27-3. FileInputStream/FileOutputStream
   
-![이미지](/assets/images/JAVA/inputoutput/io3.png)  
+![이미지](/assets/images/Java_프로그래밍_입문/27강/io3.png)  
   
 1byte 단위로 데이터를 읽어들인다.  
   
@@ -166,7 +166,7 @@ public MainCalss004{
 }
 ```
 ## 27-4. 파일 복사 
-![이미지](/assets/images/JAVA/inputoutput/io4.png)  
+![이미지](/assets/images/Java_프로그래밍_입문/27강/io4.png)  
 ```java
 public MainCalss005{
     public static void main(String[] args){
@@ -201,7 +201,7 @@ public MainCalss005{
 }
 ```
 ## 27-5. DataInputStream, DataOutputStream
-![이미지](/assets/images/JAVA/inputoutput/io5.png)  
+![이미지](/assets/images/Java_프로그래밍_입문/27강/io5.png)  
 왜냐면 byte단위는 사람이 보기 불편하기 때문에  
   
 >문자열 단위로 받아들임.  
@@ -252,7 +252,7 @@ public class MainClass {
 
 ```
 ## 27-6. BufferedReader, BufferedWriter
-![이미지](/assets/images/JAVA/inputoutput/io6.png)  
+![이미지](/assets/images/Java_프로그래밍_입문/27강/io6.png)  
 ```java
 package lec27Pjt006;
 

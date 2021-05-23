@@ -21,17 +21,17 @@ last_modified_at: 2021-04-19 22:00:20
   
 ## 26-1. 예외란?
   
-![이미지](/assets/images/JAVA/Exceptions/ex1.png)  
+![이미지](/assets/images/Java_프로그래밍_입문/26강/ex1.png)  
   
 ## 26-2. Exception 클래스
   
-![이미지](/assets/images/JAVA/Exceptions/ex2.png)  
+![이미지](/assets/images/Java_프로그래밍_입문/26강/ex2.png)  
   
 > Exception 클래스가 전부 다 포함하므로, 가볍게 보고 넘어가자  
   
 ## 26-3. try ~ catch
   
-![이미지](/assets/images/JAVA/Exceptions/ex3.png)  
+![이미지](/assets/images/Java_프로그래밍_입문/26강/ex3.png)  
   
 > 자바에선 throws, try ~ catch 두가지가 많이 쓰인다. 
   
@@ -61,15 +61,15 @@ public class MainClass{
 ```
   
 ## 26-4. 다양한 예외처리  
-![이미지](/assets/images/JAVA/Exceptions/ex4.png)  
+![이미지](/assets/images/Java_프로그래밍_입문/26강/ex4.png)  
 
 ## 26-5. finally
-![이미지](/assets/images/JAVA/Exceptions/ex5.png)  
+![이미지](/assets/images/Java_프로그래밍_입문/26강/ex5.png)  
 > 반듯이라고 자꾸 나오는데 내가 적은게 아니다..  
 > 반드시가 맞다...
 
 ## 26-6. throws
-![이미지](/assets/images/JAVA/Exceptions/ex6.png)  
+![이미지](/assets/images/Java_프로그래밍_입문/26강/ex6.png)  
 본인을 호출한 메서드로 넘어간다.  
 
 끝-!😋

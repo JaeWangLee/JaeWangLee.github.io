@@ -19,16 +19,16 @@ last_modified_at: 2021-04-20 21:30:20
     
 ## 28-1. 네트워크 데이터 입력 및 출력
   
-![이미지](/assets/images/JAVA/network/nw1.png)  
+![이미지](/assets/images/Java_프로그래밍_입문/28강/nw1.png)  
     
 ## 28-2. 소켓(Socket)
   
-![이미지](/assets/images/JAVA/network/nw2.png)  
+![이미지](/assets/images/Java_프로그래밍_입문/28강/nw2.png)  
 > socket은 전화기와 같은 역할을 한다고 생각하자.
   
 ## 28-3. Socket 클래스
   
-![이미지](/assets/images/JAVA/network/nw3.png)  
+![이미지](/assets/images/Java_프로그래밍_입문/28강/nw3.png)  
   
 ```java
 package testPjt;
@@ -69,7 +69,7 @@ public class MainClass{
   
 ## 28-4. Client와 Server 소켓(Socket)
   
-![이미지](/assets/images/JAVA/network/nw4.png)  
+![이미지](/assets/images/Java_프로그래밍_입문/28강/nw4.png)  
   
 ```java
 package testPjt;
@@ -104,7 +104,7 @@ public class MainClassSocket{
 
 ## 28-5.양방향 통신
   
-![이미지](/assets/images/JAVA/network/nw5.png)  
+![이미지](/assets/images/Java_프로그래밍_입문/28강/nw5.png)  
   
 ### 클라이언트 Code
   
