@@ -119,9 +119,10 @@ public class MainClass{
         b = map.containsKey(7);
         System.out.println("map.containsKey(7) : " + b);
 
+        //특정 value의 데이터 포함 여부
         b = map.containsValue("World");
         System.out.println("map.containsValue(\"World\") : " + b);
-
+ 
         // 데이터 전체 제거
         map.clear();
         System.out.println("map : " + map);

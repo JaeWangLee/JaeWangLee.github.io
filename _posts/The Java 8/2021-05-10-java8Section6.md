@@ -147,7 +147,7 @@ private static Runnable getRunnable(String message){
 >Javapool-1-thread-1  
 >Threadpool-1-thread-1  
   
-![이미지](/assets/images/Java/TheJava8/Thread_1.png)
+![이미지](/assets/images/TheJava8/Thread_1.png)
   
 작업들을 `ExecutorService` 로 보낸다.  
 ES 안에는 `BlockingQueue`가 존재한다.  
@@ -243,12 +243,12 @@ for(Future<String> f : futures){
 executorService.shutdown();
   
 ```  
-![이미지](/assets/images/Java/TheJava8/Thread_2.png)
+![이미지](/assets/images/TheJava8/Thread_2.png)
 Hello가 2초, Java가 3초, Keesun이 1초  
 `invokeAll`은 이 세개가 모두 끝날때 까지 기다린다.  
 여기서는 Java가 끝날때까지 기다림.  
   
-![이미지](/assets/images/Java/TheJava8/Thread_3.png)
+![이미지](/assets/images/TheJava8/Thread_3.png)
 그렇다면 서버 1,2,3에 똑같은 파일을 다 복사해 놓았을 때 가져오라고 한다면?  
 다 기다릴 필요가 없기 때문에. 이 경우에는 `invokeAny` 사용  
 하나만 가져오면 끝내버림. Keesun이 출력  
