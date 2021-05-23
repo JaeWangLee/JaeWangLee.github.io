@@ -13,7 +13,7 @@ last_modified_at: 2021-05-15 19:10:20
 
 # 📚 약수의 갯수와 덧셈
   
-링크📎 : <https://programmers.co.kr/learn/courses/30/lessons/12950?language=java>  
+링크📎 : <https://programmers.co.kr/learn/courses/30/lessons/77884>  
 
 >난이도 ⭐️
   
