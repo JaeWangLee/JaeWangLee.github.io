@@ -133,12 +133,12 @@ public class RunSomethingImpl{
         // 1. andThen
         //먼저 p11을 진행하고, 그 다음에 multiply2 진행한다.  
         Function<Integer, Integer> Plus11Andmultiply2 = p11.andThen(multiply2); 
-        Plus11Andmultiply2(2);// (2+11)*2
+        Plus11Andmultiply2.apply(2);// (2+11)*2
 
         // 2. compose
         // multiply의 결과 값을 받아서 p11에 입력값으로 넘긴다.  
-        Function<Integer, Integer> muiltiply2AndPlus11 = p11.compose(multiply2);
-        multyply2AndPlus11(2); // 2*2 + 11
+        Function<Integer, Integer> multiply2AndPlus11 = p11.compose(multiply2);
+        multiply2AndPlus11.apply(2); // 2*2 + 11
     }
 }
 
@@ -238,7 +238,7 @@ BiFunction<T, U, R>의 특수한 형태로, 동일한 타입의 입렵값 두개
 **1. 로컬 변수 캡처**  
   
 - `final`이거나 `effective final` 인 경우에만 참조할 수 있다.
-- 그렇지 않을 경우 concurrency 문제가 생길 수 있어서 컴파일가 방지한다.
+- 그렇지 않을 경우 concurrency 문제가 생길 수 있어서 컴파일러가 방지한다.
   
 ```java
 int baseNubmer = 10;
@@ -256,7 +256,7 @@ runSomthing.doit(1);
 
 **3. Shadowing**  
   
-- 익명 클래스 구현체와 달리 **‘쉐도윙’**하지 않는다.  
+- 익명 클래스 구현체와 달리 **‘쉐도잉’**하지 않는다.  
 - 익명 클래스는 새로 스콥을 만들지만, 람다는 람다를 감싸고 있는 스콥과 같다.
   
 > **익명클래스(Anonymous Class)?**  
