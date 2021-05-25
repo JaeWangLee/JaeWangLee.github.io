@@ -305,5 +305,5 @@ null
 #### static comparing()
 java.lang.Comparable을 상속받는다.  
 정렬 키를 인자로 받는다.  
- 
+  
 끝-!
