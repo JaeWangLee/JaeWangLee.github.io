@@ -22,7 +22,7 @@ last_modified_at: 2021-05-03 21:00:20
 ### Stream
 sequence of elements supporting sequential and parallel aggregate operations  
 - 데이터를 담고 있는 저장소 (컬렉션)이 아니다.
-- Funtional in nature, 스트림이 처리하는 <u>데이터 소스를 변경하지 않는다.</u>
+- Functional in nature, 스트림이 처리하는 <u>데이터 소스를 변경하지 않는다.</u>
   
 ```java
 public static void main(String[] args){
@@ -97,16 +97,16 @@ Stateless / Stateful 오퍼레이션으로 더 상세하게 구분할 수도 있
 
 ## 3.2. Stream API
   
-### 걸러내기
+### 걸러내기  
 Filter(Predicate)  
 - 예) 이름이 3글자 이상인 데이터만 새로운 스트림으로 
   
-### 변경하기
+### 변경하기  
 Map(Function) 또는 FlatMap(Function)
 - 예) 각각의 Post 인스턴스에서 String title만 새로운 스트림으로
 - 예) List<Stream<String>>을 String의 스트림으로
   
-### 생성하기
+### 생성하기  
 generate(Supplier) 또는 Iterate(T seed, UnaryOperator)  
 - 예) 10부터 1씩 증가하는 무제한 숫자 스트림
 - 예) 랜덤 int 무제한 스트림
