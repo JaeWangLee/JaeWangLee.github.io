@@ -63,7 +63,8 @@ collect.forEach(System.out::println);
 //이렇게 하면 대문자로 변경된 collect 스트림을 출력한다. 
 ```
   
-- 손쉽게 병렬 처리할 수 있다.
+- 손쉽게 병렬 처리할 수 있다.  
+  
 ```java
 for(String name : names){
     if(name.startsWith("K")){
@@ -77,6 +78,7 @@ List<String> collect = names.parallelStream().map(String::toUpperCase)
 collect.forEach(System.out::println);
 //이런식으로 parallelStream을 사용하면 처리가 쉽다.
 ```
+  
 - 연속된 데이터를 처리하는 오퍼레이션들의 모음이라고 볼 수 있다.  
   
 ### 스트림 파이프라인
@@ -129,6 +131,7 @@ reduce(identity, BiFunction), collect( ), sum( ), max( )
 - 예) 모든 데이터를 하나의 List 또는 Set에 옮겨 담기  
   
 [코드]  
+
 ```java
 import java.util.ArrayList;
 import java.util.Collection;
