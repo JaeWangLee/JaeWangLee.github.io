@@ -22,7 +22,8 @@ last_modified_at: 2021-05-05 21:00:20
 > null을 리턴하니까! && null 체크를 깜빡했으니까!  
   
 Optional 이전 `NullPointerException`의 해결방식은 다음과 같았다.
-- Null 체크를 한다. (에러 발생할 가능성이 ⬆️)
+- Null 체크를 한다. (에러 발생할 가능성이 ⬆️)  
+  
 ```java
         // 해결방안 1. 옛날 방식
         OnlineClass spring_boot = new OnlineClass(1, "spring boot", true);
@@ -33,10 +34,11 @@ Optional 이전 `NullPointerException`의 해결방식은 다음과 같았다.
         // 에러를 만들기 좋은 코드. 
         // 첫번째 이유. Null체크를 빼먹을 수 있어서.
         // 두번째 이유. Null을 리턴하는 것 자체가 문제
-``` 
+```  
+  
 - 리턴 값이 null일 경우 Exception을 주었다.  
 > Exception은 해당 오류가 발생하기까지의 stackTrace 데이터를 리턴하는데, 이게 불필요한 때가 있다.  
-
+  
 - Null을 받은 클라이언트 코드 측에서 대응작업을 진행하였다.
   
 ### Optional
