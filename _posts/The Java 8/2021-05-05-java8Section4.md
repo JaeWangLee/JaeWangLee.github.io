@@ -55,8 +55,9 @@ public Optional<ReturnObject> getReturnObject(){
 }
 ```
   
-**주의할 것**  
-- <u>리턴값으로만</u> 쓰기를 권장한다. (메소드 매개변수 타입, 맵의 키 타입, 인스턴스 필드 타입으로 쓰지 말자.) 
+**※ 주의할 것**  
+- <u>리턴값으로만</u> 쓰기를 권장한다. (메소드 매개변수 타입, 맵의 키 타입, 인스턴스 필드 타입으로 쓰지 말자.)  
+  
 ```java
 public void OptionalParameter(Optional<Object> obj){
     // Optional 안에 실제 객체가 있는지 확인하는 코드가 필요
@@ -147,6 +148,7 @@ public class App{
         // else에 걸려서 무조건 실행이 필요한 경우에만 코드를 실행한다. 
         // 즉, 동적으로 새로운 객체를 생성해 실행해야 할 경우 orElseGet이 적합.
         optionalOnlineClass.orElseGet(()->createNewClass());
+        
         // lambda를 사용할 경우
         optionalOnlineClass.orElseGet(testStreamExample::createNewClass);
 
