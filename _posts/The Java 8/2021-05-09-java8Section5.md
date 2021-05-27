@@ -107,9 +107,9 @@ ZonedDateTime nowInKorea = ZoneDateTime.now(ZoneId.of("Asia/Seoul"));
 ```java
     // Human용 시간을 비교할 때
     LocalDate today = LocalDate.now();
-    LocalDate thisYearBirthday = LocalDate.of(2021,OCTOBER,21);
-    Period period = Period.between(today, birthDay);
-    System.out.println(priod.get(ChronoUnit.DAYS));
+    LocalDate birthDay = LocalDate.of(2021, Month.OCTOBER,21);
+    Period period = Period.between(today, birthDay); // 2021-05-27 기준 P4M24D
+    System.out.println(period.get(ChronoUnit.DAYS)); // 24 출력
 
     // Machine용 시간을 비교할 때
     Instant now = Instant.now();
