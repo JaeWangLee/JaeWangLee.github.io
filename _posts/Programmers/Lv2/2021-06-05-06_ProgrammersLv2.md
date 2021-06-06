@@ -31,25 +31,16 @@ class Solution {
         int temp = 0;
         int buf = 0;
         
-        // 두가지로 나눠서 풀자
-        // 1. 원하는 알파벳으로 바꾸는 방법
-        // 2. 원하는 위치로 옮기는 방법
-        // 1 은 위로 가는 방향, 아래로 가는 방향을 고려하고
-        // 2 는 왼쪽으로 가는 방향, 오른쪽으로 가는 방향을 고려한다.
-        // 왜냐면 왼쪽 갔다 오른쪽 가거나, 위로 갔다 아래로 가면 무조건 최솟값이 아니기 때문에
-        
-        // 1에 대해서 먼저 해보자
         for(int i = 0; i < name.length(); i++){
-          answer += name.charAt(i) - 'A' <= 'Z' + 1 - name.charAt(i) ? name.charAt(i) - 'A':'Z' + 1 - name.charAt(i);         
+          answer += name.charAt(i) - 'A' <= 'Z' + 1 - name.charAt(i) ? name.charAt(i) - 'A':'Z' + 1 - name.charAt(i);  
         }
         
-        // 2에 대해서 해보자
-        int minMove = name.length() - 1; // 이거 이상 움직일 수 없음. Max 값
+        int minMove = name.length() - 1; 
         for(int i = 0 ; i < name.length() ; i++) {
             if(name.charAt(i) != 'A') {
                 int next = i+1;
 
-                while(next < name.length() && name.charAt(next) == 'A') // 최대가 넘지 않는 선에서 오른쪽으로 쭈욱 감.
+                while(next < name.length() && name.charAt(next) == 'A') 
                     next++;
                 
                 int move = 2 * i + name.length() - next;
@@ -62,5 +53,22 @@ class Solution {
     }
 }
 ```  
+  
+## 전략  
+  
+0. 두가지로 나눠서 풀자
+1. 원하는 알파벳으로 바꾸는 방법
+   - 위로 가는 방향
+   - 아래로 가는 방향
+2. 원하는 위치로 옮기는 방법
+   - 왼쪽으로 가는 방향
+   - 오른쪽으로 가는 방향
+  
+1은 쉽게 구현 가능하고,  
+2도 단반향으로 가는게 제일 짧은 거리라 생각을 했지만,  
+그렇게 하면 테케 마지막에서 걸리게 된다.  
+  
+오른쪽으로가다가 왼쪽으로 가는 경우가 있기 때문..  
+총 3가지로 나눠서 생각해서 풀면 되겠다.  
   
 끝-!
