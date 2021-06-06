@@ -14,7 +14,7 @@ last_modified_at: 2021-06-05 23:46:20
 # 📚 문자열 압축
   
 링크📎 : <https://programmers.co.kr/learn/courses/30/lessons/60057>  
-
+  
 >난이도 ⭐️⭐️
   
 ## 📖 문제  
