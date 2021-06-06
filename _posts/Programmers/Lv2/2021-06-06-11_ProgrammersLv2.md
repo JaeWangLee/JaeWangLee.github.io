@@ -1,5 +1,5 @@
 ---
-title: "[프로그래머스] 튜플"
+title: "[프로그래머스] [LV2] 튜플"
 excerpt: "Java로 풀이"
 toc: true
 toc_sticky: true

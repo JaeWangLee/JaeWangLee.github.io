@@ -1,5 +1,5 @@
 ---
-title: "[프로그래머스] 124 나라의 숫자"
+title: "[프로그래머스] [LV2] 124 나라의 숫자"
 excerpt: "Java로 풀이"
 toc: true
 toc_sticky: true

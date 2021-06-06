@@ -1,5 +1,5 @@
 ---
-title: "[프로그래머스] 프린터"
+title: "[프로그래머스] [LV2] 프린터"
 excerpt: "Java로 풀이"
 toc: true
 toc_sticky: true
