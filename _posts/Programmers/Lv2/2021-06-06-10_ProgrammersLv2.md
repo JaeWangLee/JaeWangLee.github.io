@@ -24,7 +24,8 @@ last_modified_at: 2021-06-06 14:06:20
   
 ## 📝 내 풀이  
   
-```java  import java.util.*;
+```java  
+import java.util.*;
 
 class Solution {
     public int solution(int[] priorities, int location) {
