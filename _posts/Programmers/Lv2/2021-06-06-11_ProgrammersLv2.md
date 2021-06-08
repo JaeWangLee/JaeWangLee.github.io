@@ -29,7 +29,7 @@ last_modified_at: 2021-06-06 15:50:20
 ## 📝 내 풀이  
   
 ```java  
-
+  
 import java.util.*;
 
 class Solution {
