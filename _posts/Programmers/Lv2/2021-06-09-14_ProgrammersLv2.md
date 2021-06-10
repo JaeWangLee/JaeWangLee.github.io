@@ -52,6 +52,6 @@ class Solution {
   
 1. 조합의 수를 생각하자
    ex) 4종류일 경우 = (종류1+1)x(종류2+1)x(종류3+1)x(종류4+1) - 1  
-2. 조합을 Hash의 key-value로 관리하자
+2. 조합을 Hash의 key-value로 관리하자  
   
 끝-!
