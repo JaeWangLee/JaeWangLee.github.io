@@ -24,36 +24,81 @@ last_modified_at: 2021-06-13 14:45:20
   
 ## 📝 내 풀이  
   
+첫번째 풀이  
+이렇게 풀면 TC 10, 11에서 시간 초과 난다.  
+  
 ```java  
 import java.util.*;
-
 class Solution {
-    public String solution(String s) {
-        String answer = "";
+    public long[] solution(long[] numbers) {
+        long[] answer = new long[numbers.length];
         
-        ArrayList<Integer> list = new ArrayList<Integer>();
-        
-        String[] str = s.split(" ");
-        
-        for(String st : str){
-            if(st.charAt(0) =='-')
-             list.add(-1 * Integer.parseInt(st.substring(1,st.length())));   
-            else list.add(Integer.parseInt(st));
-        }
-        
-        Collections.sort(list);
-        
-        answer = Integer.toString(list.get(0)) + " " + Integer.toString(list.get(list.size()-1));
+        for(int i = 0; i < numbers.length ; i++)
+            answer[i] = functionF(numbers[i]);
         
         return answer;
     }
+    
+    public long functionF(long n){
+        
+        if(n%2==0) return n+1;
+        
+        long num = n+1;
+        
+        ArrayList<Long> list = new ArrayList<Long>();
+        
+        while(n!=0){
+            list.add(n%2);
+            n/=2;    
+        }
+        
+        while(true){
+            long count = 0;
+            long temp = num;
+            for(long i : list){
+                if(temp%2 != i) count++;
+                temp /= 2;
+                if(count>2) break;
+            }
+            if(temp==0&&count<3) break;
+            else if(count<2) break;
+            num++;
+        }
+        return num;
+    }
 }
 ```  
-   
-## 👊🏻 전략  
   
-1. split
-2. - 부호 처리
-3. 정렬 후 맨 앞/뒤 출력
+두번째 풀이 - 비트 연산자 이용  
+  
+```java
+import java.util.*;
+class Solution {
+    public long[] solution(long[] numbers) {
+        long[] answer = new long[numbers.length];
+        
+        for(int i = 0; i < numbers.length ; i++)
+            answer[i] = functionF(numbers[i]);
+        
+        return answer;
+    }
+    
+    public long functionF(long n){
+        long cnt = 0;
+        long temp = n;
+        if(n%2==0) return n+1;
+        else{
+            while(true){
+                if(temp%2==0) break;
+                temp/=2;
+                cnt++;
+            }
+        }
+        // n+= (1<<cnt) - (1<< cnt-1); 이건 안된다.
+        n += Math.pow(2,cnt) - Math.pow(2,cnt-1);
+        return n;
+    }
+}
+```
   
 끝-!
