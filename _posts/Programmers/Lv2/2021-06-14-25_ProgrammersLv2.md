@@ -8,7 +8,7 @@ categories:
 tags:
   - codingtest
   - algorithm
-last_modified_at: 2021-06-14 22:28:20
+last_modified_at: 2021-06-14 21:28:20
 ---
 
 # 📚 숫자의 표현

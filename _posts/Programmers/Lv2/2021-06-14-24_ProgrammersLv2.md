@@ -8,7 +8,7 @@ categories:
 tags:
   - codingtest
   - algorithm
-last_modified_at: 2021-06-14 22:13:20
+last_modified_at: 2021-06-14 21:13:20
 ---
 
 # 📚 N개의 최소 공배수
