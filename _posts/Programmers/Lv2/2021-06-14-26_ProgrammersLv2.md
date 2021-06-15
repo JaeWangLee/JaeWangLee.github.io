@@ -17,7 +17,7 @@ last_modified_at: 2021-06-14 22:08:20
   
 >난이도 ⭐️⭐️
   
-## 📖 문제  
+## 📖 문제    
   
 ![이미지](/assets/images/Programmers/Lv2/prob26/26-1.png)
   
