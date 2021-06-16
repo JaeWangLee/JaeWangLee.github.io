@@ -23,7 +23,7 @@ last_modified_at: 2021-06-15 22:08:20
 ![이미지](/assets/images/Programmers/Lv2/prob28/28-2.png)
   
 ## 📝 내 풀이  
-  
+    
 ```java  
 import java.util.*;
 
