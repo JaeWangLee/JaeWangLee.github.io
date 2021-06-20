@@ -48,7 +48,7 @@ class Solution {
                 temp /= n;
                 if(temp==0) break;
             }
-            
+             
             while(!bufNum.isEmpty() && count < t){
                 if(idx % m == p){
                     qNum.offer(table[bufNum.pop()]);
