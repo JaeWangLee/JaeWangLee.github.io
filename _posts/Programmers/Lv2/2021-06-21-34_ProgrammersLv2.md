@@ -41,7 +41,7 @@ class Solution {
                 else if(buf.peek() == '(') buf.pop();
                 else buf.push(')');
             }
-        }
+        } 
         
         if(buf.isEmpty()) answer = true;
 
