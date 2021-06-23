@@ -88,7 +88,7 @@ class Solution {
         
         answer = map.size()/2;
         
-        return answer;
+        return answer; 
     }
 }
 ```
