@@ -84,7 +84,7 @@ class Solution {
             map.put(d2_str + d1_str, 1);
             d1_str = "";
             d2_str = "";
-        }
+        } 
         
         answer = map.size()/2;
         
