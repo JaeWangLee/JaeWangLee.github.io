@@ -1,5 +1,5 @@
 ---
-title: "[프로그래머스] [LV2] 행렬 테두리 회전하기"
+title: "[프로그래머스] [LV2] 행렬의 곱셈"
 excerpt: "Java로 풀이"
 toc: true
 toc_sticky: true
@@ -11,7 +11,7 @@ tags:
 last_modified_at: 2021-06-29 20:05:20
 ---
 
-# 📚 행렬 테두리 회전하기
+# 📚 행렬의 곱셈
   
 링크📎 : <https://programmers.co.kr/learn/courses/30/lessons/12949>  
   
