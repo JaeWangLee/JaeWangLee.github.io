@@ -17,7 +17,7 @@
             <ul>
                 {% for category in site.categories %}
                     {% if category[0] == "회고록" %}
-                        <li><a href="/categories/회고록" class="">회고록 ({{category[1].size}})</a></li>
+                        <li><a href="/categories/rememberance" class="">회고록 ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>

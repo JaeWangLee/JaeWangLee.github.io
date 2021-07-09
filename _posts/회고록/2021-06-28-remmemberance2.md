@@ -4,7 +4,7 @@ excerpt: "91일 간의 출장의 끝"
 toc: true
 toc_sticky: true
 categories:
-  - 회고록
+  - rememberance
 tags:
   - 
 last_modified_at: 2021-06-28 16:40:20
