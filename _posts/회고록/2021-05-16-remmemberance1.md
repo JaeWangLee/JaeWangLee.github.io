@@ -4,7 +4,7 @@ excerpt: "출장 50일차"
 toc: true
 toc_sticky: true
 categories:
-  - talk
+  - 회고록
 tags:
   - 
 last_modified_at: 2021-05-16 20:36:20

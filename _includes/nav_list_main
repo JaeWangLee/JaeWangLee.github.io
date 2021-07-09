@@ -16,6 +16,13 @@
         <span class="nav__sub-title">ME</span>
             <ul>
                 {% for category in site.categories %}
+                    {% if category[0] == "회고록" %}
+                        <li><a href="/categories/talk" class="">회고록 ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            <ul>
+                {% for category in site.categories %}
                     {% if category[0] == "talk" %}
                         <li><a href="/categories/talk" class="">잡담 ({{category[1].size}})</a></li>
                     {% endif %}
