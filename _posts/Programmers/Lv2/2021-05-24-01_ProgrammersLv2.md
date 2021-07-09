@@ -10,7 +10,7 @@ tags:
   - algorithm
 last_modified_at: 2021-05-24 22:20:20
 ---
-
+  
 # 📚 짝지어 제거하기
   
 링크📎 : <https://programmers.co.kr/learn/courses/30/lessons/12973>  
