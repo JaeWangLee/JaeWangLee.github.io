@@ -16,7 +16,7 @@
         <span class="nav__sub-title">ME</span>
             <ul>
                 {% for category in site.categories %}
-                    {% if category[0] == "회고록" %}
+                    {% if category[0] == "rememberance" %}
                         <li><a href="/categories/rememberance" class="">회고록 ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
