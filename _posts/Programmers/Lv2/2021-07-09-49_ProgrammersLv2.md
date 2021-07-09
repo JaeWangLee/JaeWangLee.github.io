@@ -35,10 +35,8 @@ class Solution {
     public int[] solution(String msg) {
         int[] answer = {};
         Queue<Integer> q = new LinkedList<Integer>();
-        
         ArrayList<String> dictionary = new ArrayList<String>();        
-        StringBuilder sb = new StringBuilder();
-        
+                
         dictionary.add("0");
         
         for(char c = 'A'; c <= 'Z'; c++)
@@ -73,8 +71,8 @@ class Solution {
   
 ## 👊🏻 내 전략 
   
-1. 도출된 숫자가 중복될 수 있으니 set으로 관리하자(중복 안되도록)
-2. isPrime에서 Math.sqrt()를 사용한 이유는 제곱근을 기준으로 대칭되기 때문이다.
-   - 예를들어 16이라고 하면 4를 기준으로 대칭임(1,16), (2,8), (4,4), (8,2), (16,1)
+1. 단어를 관리할 dictionary는 ArrayList로 선언하였다.
+2. Queue를 선언하여 인덱스를 관리하도록 하였다.
+3. substring과 indexOf를 적절히 활용하여 단어를 도출하고, 검색하는데 사용하였다.
   
 끝-!
