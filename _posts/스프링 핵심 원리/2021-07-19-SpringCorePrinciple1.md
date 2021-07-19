@@ -113,7 +113,8 @@ Spring은 `Java` 기반의 프레임워크이며, 자바의 가장 큰 특징은
 ### 다형성의 한계
 다형성만으로는 위의 5가지 원칙에 있어서 2가지 원칙이 위반된다.
 - OCP 위반
-  - 구현 객체를 변경하려면 클라이언트 코드를 변경이 불가피하다.
+  - 구현 객체를 변경하려면 클라이언트 코드를 변경이 불가피하다.  
+  
   ``` java
 
   public class MemberService {
@@ -126,6 +127,7 @@ Spring은 `Java` 기반의 프레임워크이며, 자바의 가장 큰 특징은
       private MemberRepository memberRepository = new JdbcMemberRepository();
     }
   ```
+  
   - 이를 위해선 `객체를 생성하고, 연관관계를 맺어주는 별도의 조립, 설정자가 필요하다.`
   
 - DIP 위반
