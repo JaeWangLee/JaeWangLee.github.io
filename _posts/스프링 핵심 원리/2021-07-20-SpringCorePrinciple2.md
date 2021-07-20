@@ -90,46 +90,46 @@ last_modified_at: 2021-07-20 14:30:20
     <details>
     <summary>코드 보기</summary>  
     <div markdown = "1">
-        ```java
-            package hello.core.member;
+      ```java
+          package hello.core.member;
 
-            public class Member {
+          public class Member {
 
-              private Long id;
-              private String name;
-              private Grade grade;
+            private Long id;
+            private String name;
+            private Grade grade;
 
-              public Member(Long id, String name, Grade grade) {
-                  this.id = id;
-                  this.name = name;
-                  this.grade = grade;
-              }
+            public Member(Long id, String name, Grade grade) {
+                this.id = id;
+                this.name = name;
+                this.grade = grade;
+            }
 
-              public Long getId() {
-                  return id;
-              }
+            public Long getId() {
+                return id;
+            }
 
-              public void setId(Long id) {
-                  this.id = id;
-              }
+            public void setId(Long id) {
+                this.id = id;
+            }
 
-              public String getName() {
-                  return name;
-              }
+            public String getName() {
+                return name;
+            }
 
-              public void setName(String name) {
-                  this.name = name;
-              }
+            public void setName(String name) {
+                this.name = name;
+            }
 
-              public Grade getGrade() {
-                  return grade;
-              }
+            public Grade getGrade() {
+                return grade;
+            }
 
-              public void setGrade(Grade grade) {
-                  this.grade = grade;
-              }
-            }  
-        ```
+            public void setGrade(Grade grade) {
+                this.grade = grade;
+            }
+          }  
+      ```
     </div>
     </details>
   
@@ -141,13 +141,13 @@ last_modified_at: 2021-07-20 14:30:20
     <details>
       <summary>코드 보기</summary>  
       <div markdown = "1">
-          ```java  
-            package hello.core.member;
-            public interface MemberRepository {
-                void save(Member member);
-                Member findById(Long memberId);
-            }
-          ```
+        ```java  
+          package hello.core.member;
+          public interface MemberRepository {
+              void save(Member member);
+              Member findById(Long memberId);
+          }
+        ```
       </div>
     </details>
   
@@ -157,28 +157,28 @@ last_modified_at: 2021-07-20 14:30:20
     <details>
       <summary>코드 보기</summary>  
       <div markdown = "1">
-          ```java  
-          package hello.core.member;
+        ```java  
+        package hello.core.member;
 
-          import java.util.HashMap;
-          import java.util.Map;
+        import java.util.HashMap;
+        import java.util.Map;
 
-          public class MemoryMemberRepository implements MemberRepository{
+        public class MemoryMemberRepository implements MemberRepository{
 
-              private static Map<Long, Member> store = new HashMap<>();
-              // 동시성 이슈가 있어 실무에서는 concurrent Hashmap 을 사용한다.
+            private static Map<Long, Member> store = new HashMap<>();
+            // 동시성 이슈가 있어 실무에서는 concurrent Hashmap 을 사용한다.
 
-              @Override
-              public void save(Member member) {
-                  store.put(member.getId(), member);
-              }
+            @Override
+            public void save(Member member) {
+                store.put(member.getId(), member);
+            }
 
-              @Override
-              public Member findById(Long memberId) {
-                  return store.get(memberId);
-              }
-          }
-          ```
+            @Override
+            public Member findById(Long memberId) {
+                return store.get(memberId);
+            }
+        }
+        ```
       </div>
     </details>
   
@@ -189,13 +189,13 @@ last_modified_at: 2021-07-20 14:30:20
     <details>
       <summary>코드 보기</summary>  
       <div markdown = "1">
-          ```java  
-          package hello.core.member;
-          public interface MemberService {
-              void join(Member member);
-              Member findMember(Long memberId);
-          }
-          ```
+        ```java  
+        package hello.core.member;
+        public interface MemberService {
+            void join(Member member);
+            Member findMember(Long memberId);
+        }
+        ```
       </div>
     </details>
   
@@ -204,26 +204,25 @@ last_modified_at: 2021-07-20 14:30:20
     <details>
       <summary>코드 보기</summary>  
       <div markdown = "1">
-          ```java  
-          package hello.core.member;
+        ```java  
+        package hello.core.member;
 
-          public class MemberServiceImpl implements MemberService{
+        public class MemberServiceImpl implements MemberService{
 
-              private final MemberRepository memberRepository = new MemoryMemberRepository();
-              //구현체를 넣어준다.
+            private final MemberRepository memberRepository = new MemoryMemberRepository();
+            //구현체를 넣어준다.
 
-              @Override
-              public void join(Member member) {
-                  memberRepository.save(member);
-              }
+            @Override
+            public void join(Member member) {
+                memberRepository.save(member);
+            }
 
-              @Override
-              public Member findMember(Long memberId) {
-                  return memberRepository.findById(memberId);
-              }
-          }
-
-          ```
+            @Override
+            public Member findMember(Long memberId) {
+                return memberRepository.findById(memberId);
+            }
+        }
+        ```
       </div>
     </details>
   
