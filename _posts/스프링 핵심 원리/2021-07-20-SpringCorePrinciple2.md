@@ -77,10 +77,10 @@ last_modified_at: 2021-07-20 14:30:20
       
           ```java  
           package hello.core.member;
-          public enum Grade {
-              BASIC,
-              VIP 
-          }  
+            public enum Grade {
+                BASIC,
+                VIP 
+            }  
           ```
         
       </div>
@@ -137,7 +137,7 @@ last_modified_at: 2021-07-20 14:30:20
   
 ### 회원 저장소
 - 회원 저장소 인터페이스
-  - 요구사항처럼 `저장`과 `조회`가 가능함.
+  - 요구사항의 `저장`과 `조회`를 구현.
     <details>
       <summary>코드 보기</summary>  
       <div markdown = "1">
