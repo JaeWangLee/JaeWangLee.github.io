@@ -74,6 +74,7 @@ last_modified_at: 2021-07-20 14:30:20
     <details>
       <summary>코드 보기</summary>  
       <div markdown = "1">
+      
           ```java  
           package hello.core.member;
           public enum Grade {
@@ -81,6 +82,7 @@ last_modified_at: 2021-07-20 14:30:20
               VIP 
           }  
           ```
+        
       </div>
     </details>
   
