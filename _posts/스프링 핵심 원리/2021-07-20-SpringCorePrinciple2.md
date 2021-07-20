@@ -139,47 +139,47 @@ last_modified_at: 2021-07-20 14:30:20
   - 저장소는 아직 미정이기 때문에 인터페이스를 만든다.
   - 회원의 `저장`과 `조회`를 구현.
     <details>
-      <summary>코드 보기</summary>  
-      <div markdown = "1">
-        ```java  
-          package hello.core.member;
-          public interface MemberRepository {
-              void save(Member member);
-              Member findById(Long memberId);
-          }
-        ```
-      </div>
+    <summary>코드 보기</summary>  
+    <div markdown = "1">
+      ```java  
+        package hello.core.member;
+        public interface MemberRepository {
+            void save(Member member);
+            Member findById(Long memberId);
+        }
+      ```
+    </div>
     </details>
   
 - 메모리 회원 저장소 구현체(MemoryMemberRepository)
   - DB가 미정이기 때문에 가장 단순한 메모리 회원 저장소를 구현한다.
   - 참고 : HashMap은 동시성 이슈가 발생할 수 있다. 이런 경우 `ConcurrentHashMap`을 사용하자.
     <details>
-      <summary>코드 보기</summary>  
-      <div markdown = "1">
-        ```java  
-        package hello.core.member;
+    <summary>코드 보기</summary>  
+    <div markdown = "1">
+      ```java  
+      package hello.core.member;
 
-        import java.util.HashMap;
-        import java.util.Map;
+      import java.util.HashMap;
+      import java.util.Map;
 
-        public class MemoryMemberRepository implements MemberRepository{
+      public class MemoryMemberRepository implements MemberRepository{
 
-            private static Map<Long, Member> store = new HashMap<>();
-            // 동시성 이슈가 있어 실무에서는 concurrent Hashmap 을 사용한다.
+          private static Map<Long, Member> store = new HashMap<>();
+          // 동시성 이슈가 있어 실무에서는 concurrent Hashmap 을 사용한다.
 
-            @Override
-            public void save(Member member) {
-                store.put(member.getId(), member);
-            }
+          @Override
+          public void save(Member member) {
+              store.put(member.getId(), member);
+          }
 
-            @Override
-            public Member findById(Long memberId) {
-                return store.get(memberId);
-            }
-        }
-        ```
-      </div>
+          @Override
+          public Member findById(Long memberId) {
+              return store.get(memberId);
+          }
+      }
+      ```
+    </div>
     </details>
   
 ### 회원 서비스
@@ -187,43 +187,43 @@ last_modified_at: 2021-07-20 14:30:20
 - 회원 서비스 인터페이스(MemberService)
   - `가입`과 `조회`가 가능하도록 구현한다.
     <details>
-      <summary>코드 보기</summary>  
-      <div markdown = "1">
-        ```java  
-        package hello.core.member;
-        public interface MemberService {
-            void join(Member member);
-            Member findMember(Long memberId);
-        }
-        ```
-      </div>
+    <summary>코드 보기</summary>  
+    <div markdown = "1">
+      ```java  
+      package hello.core.member;
+      public interface MemberService {
+          void join(Member member);
+          Member findMember(Long memberId);
+      }
+      ```
+    </div>
     </details>
   
 - 회원 서비스 구현체(MemberServiceImpl)
   - `memoryMemberRepository`를 구현체로한 회원 서비스 구현체를 구현한다.
     <details>
-      <summary>코드 보기</summary>  
-      <div markdown = "1">
-        ```java  
-        package hello.core.member;
+    <summary>코드 보기</summary>  
+    <div markdown = "1">
+      ```java  
+      package hello.core.member;
 
-        public class MemberServiceImpl implements MemberService{
+      public class MemberServiceImpl implements MemberService{
 
-            private final MemberRepository memberRepository = new MemoryMemberRepository();
-            //구현체를 넣어준다.
+          private final MemberRepository memberRepository = new MemoryMemberRepository();
+          //구현체를 넣어준다.
 
-            @Override
-            public void join(Member member) {
-                memberRepository.save(member);
-            }
+          @Override
+          public void join(Member member) {
+              memberRepository.save(member);
+          }
 
-            @Override
-            public Member findMember(Long memberId) {
-                return memberRepository.findById(memberId);
-            }
-        }
-        ```
-      </div>
+          @Override
+          public Member findMember(Long memberId) {
+              return memberRepository.findById(memberId);
+          }
+      }
+      ```
+    </div>
     </details>
   
 ## 2.5. 회원 도메인 실행과 테스트
