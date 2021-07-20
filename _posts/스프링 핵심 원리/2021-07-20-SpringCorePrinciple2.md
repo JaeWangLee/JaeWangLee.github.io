@@ -70,9 +70,9 @@ last_modified_at: 2021-07-20 14:30:20
   
 - 회원 등급
   - member라는 패키지안에 `enum`으로 Grade 선언
-    <details markdown = "1">
+    <details>
       <summary>코드 보기</summary>  
-      
+      <div markdown = "1">
           ```java  
           package hello.core.member;
           public enum Grade {
@@ -80,57 +80,57 @@ last_modified_at: 2021-07-20 14:30:20
               VIP 
           }  
           ```
+      </div>
     </details>
   
   
 - 회원 엔티티
   - id, name, grade 등의 엔티티를 설정한다.
   - 생성자 및 getter, setter 구현한다.
-  <details markdown = "1">
-      <summary>코드 보기</summary>  
+    <details markdown = "1"> 
+        <summary>코드 보기</summary>  
       
-          ```java
-            package hello.core.member;
+            ```java
+              package hello.core.member;
 
-            public class Member {
+              public class Member {
 
-              private Long id;
-              private String name;
-              private Grade grade;
+                private Long id;
+                private String name;
+                private Grade grade;
 
-              public Member(Long id, String name, Grade grade) {
-                  this.id = id;
-                  this.name = name;
-                  this.grade = grade;
-              }
+                public Member(Long id, String name, Grade grade) {
+                    this.id = id;
+                    this.name = name;
+                    this.grade = grade;
+                }
 
-              public Long getId() {
-                  return id;
-              }
+                public Long getId() {
+                    return id;
+                }
 
-              public void setId(Long id) {
-                  this.id = id;
-              }
+                public void setId(Long id) {
+                    this.id = id;
+                }
 
-              public String getName() {
-                  return name;
-              }
+                public String getName() {
+                    return name;
+                }
 
-              public void setName(String name) {
-                  this.name = name;
-              }
+                public void setName(String name) {
+                    this.name = name;
+                }
 
-              public Grade getGrade() {
-                  return grade;
-              }
+                public Grade getGrade() {
+                    return grade;
+                }
 
-              public void setGrade(Grade grade) {
-                  this.grade = grade;
-              }
-            }  
-          ```
-
-    </details>
+                public void setGrade(Grade grade) {
+                    this.grade = grade;
+                }
+              }  
+            ```
+      </details>
 
 
 ## 2.5. 회원 도메인 실행과 테스트
