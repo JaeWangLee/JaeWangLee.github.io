@@ -71,8 +71,9 @@ last_modified_at: 2021-07-20 14:30:20
 ### 회원 엔티티
 - 회원 등급
   - member라는 패키지안에 `enum`으로 Grade 선언
-    <details markdown = "1">
+    <details>
       <summary>코드 보기</summary>  
+      <div markdown = "1">
         ```java
           package hello.core.member;
             public enum Grade {
@@ -80,6 +81,7 @@ last_modified_at: 2021-07-20 14:30:20
                 VIP 
             }  
         ```
+      </div>
     </details>
   
 - 회원 엔티티
