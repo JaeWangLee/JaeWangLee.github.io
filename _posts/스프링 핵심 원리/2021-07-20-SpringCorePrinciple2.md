@@ -87,10 +87,10 @@ last_modified_at: 2021-07-20 14:30:20
 - 회원 엔티티
   - id, name, grade 등의 엔티티를 설정한다.
   - 생성자 및 getter, setter 구현한다.
-    <details markdown = "1"> 
-        <summary>코드 보기</summary>  
-      
-            ```java
+     <details>
+      <summary>코드 보기</summary>  
+      <div markdown = "1">
+          ```java
               package hello.core.member;
 
               public class Member {
@@ -129,8 +129,9 @@ last_modified_at: 2021-07-20 14:30:20
                     this.grade = grade;
                 }
               }  
-            ```
-      </details>
+          ```
+      </div>
+    </details>
 
 
 ## 2.5. 회원 도메인 실행과 테스트
