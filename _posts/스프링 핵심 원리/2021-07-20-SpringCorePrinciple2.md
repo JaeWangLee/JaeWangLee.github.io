@@ -68,6 +68,7 @@ last_modified_at: 2021-07-20 14:30:20
   
 ## 2.4. 회원 도메인 개발
   
+### 회원 엔티티
 - 회원 등급
   - member라는 패키지안에 `enum`으로 Grade 선언
     <details>
@@ -82,7 +83,6 @@ last_modified_at: 2021-07-20 14:30:20
           ```
       </div>
     </details>
-  
   
 - 회원 엔티티
   - id, name, grade 등의 엔티티를 설정한다.
@@ -132,7 +132,18 @@ last_modified_at: 2021-07-20 14:30:20
           ```
       </div>
     </details>
-
+  
+### 회원 저장소
+- 회원 저장소 인터페이스
+  - 요구사항처럼 `저장`과 `조회`가 가능함.
+    <details>
+      <summary>코드 보기</summary>  
+      <div markdown = "1">
+          ```java  
+          
+          ```
+      </div>
+    </details>
 
 ## 2.5. 회원 도메인 실행과 테스트
 
