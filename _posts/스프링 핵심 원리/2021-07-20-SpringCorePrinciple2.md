@@ -517,4 +517,75 @@ last_modified_at: 2021-07-20 14:30:20
   
 ## 2.8. 주문과 할인 도메인 실행과 테스트
   
+- 주문과 할인 정책 실행(OrderApp)
+  - 애플리케이션을 통한 Test. 하지만 이 방법은 좋지 않은 방법이다.
+  - JUnit 테스트를 활용하자
+  <details>
+  <summary>코드 보기</summary>
+  <div markdown = "1">
+    ```java  
+    package hello.core;
+
+    import hello.core.member.Grade;
+    import hello.core.member.Member;
+    import hello.core.member.MemberService;
+    import hello.core.member.MemberServiceImpl;
+    import hello.core.order.Order;
+    import hello.core.order.OrderService;
+    import hello.core.order.OrderServiceImpl;
+
+    public class OrderApp {
+        public static void main(String[] args) {
+            MemberService memberService = new MemberServiceImpl();
+            OrderService orderService = new OrderServiceImpl();
+
+            Long memberId = 1L;
+            Member member = new Member(memberId,"memberA", Grade.VIP);
+            memberService.join(member);
+
+            Order order = orderService.createOrder(memberId, "itemA", 10000);
+
+            System.out.println("order = " + order);
+            System.out.println("order.calculatePrice() = " + order.calculatePrice());
+        }
+    }
+    ```
+  </div>
+  </details>
+  
+- 주문과 할인 정책 테스트(OrderServiceTest)
+  - JUnit 테스트를 활용한 테스트
+  - 잘 실행이 되는 것을 확인할 수 있다. 
+  <details>
+  <summary>코드 보기</summary>
+  <div markdown = "1">
+    ```java  
+    package hello.core.order;
+
+    import hello.core.member.Grade;
+    import hello.core.member.Member;
+    import hello.core.member.MemberService;
+    import hello.core.member.MemberServiceImpl;
+
+    import org.assertj.core.api.Assertions;
+    import org.junit.jupiter.api.Test;
+
+    public class OrderServiceTest {
+        MemberService memberService = new MemberServiceImpl();
+        OrderService orderService = new OrderServiceImpl();
+
+        @Test
+        void createOrder(){
+            Long memberId = 1L;
+            Member member = new Member(memberId, "memberA", Grade.VIP);
+            memberService.join(member);
+
+            Order order = orderService.createOrder(memberId, "itemA", 10000);
+            Assertions.assertThat(order.getDiscountPrice()).isEqualTo(1000);
+        }
+    }
+
+    ```
+  </div>
+  </details>
 끝-!😋
