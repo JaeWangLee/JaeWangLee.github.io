@@ -61,7 +61,7 @@ last_modified_at: 2021-07-20 14:30:20
   - 회원 저장소의 인터페이스를 `MemberRepository`로 만들고,
   - 그것에 대한 구현체로 `MemoryMemberRepository`,와 `DbMemberRepository`를 만든다.
   
-- 회원 객체 다이어 그램
+- 회원 객체 다이어 그램  
 ![이미지](/assets/images/Spring/스프링_핵심_원리/섹션2/4.png)  
   - 실제 객체 간의 메모리 참조는 위와 같이 이뤄진다.  
   - 회원 서비스 : `MemberServiceImpl`
@@ -588,4 +588,6 @@ last_modified_at: 2021-07-20 14:30:20
     ```
   </div>
   </details>
+  
+  
 끝-!😋
