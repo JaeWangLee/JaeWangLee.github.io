@@ -202,7 +202,6 @@ last_modified_at: 2021-07-22 21:30:20
     - `OrderServiceImpl` ➡️ `MemoryMemberRepository`, `FixDiscountPolicy`  
   
 - **MemberServiceImpl** - 생성자 주입
-  
     <details>
     <summary>코드 보기</summary>
     <div markdown = "1">
@@ -330,31 +329,31 @@ last_modified_at: 2021-07-22 21:30:20
       ```java  
       package hello.core;
 
-              import hello.core.member.Grade;
-              import hello.core.member.Member;
-              import hello.core.member.MemberService;
-              import hello.core.member.MemberServiceImpl;
-              import hello.core.order.Order;
-              import hello.core.order.OrderService;
-              import hello.core.order.OrderServiceImpl;
+      import hello.core.member.Grade;
+      import hello.core.member.Member;
+      import hello.core.member.MemberService;
+      import hello.core.member.MemberServiceImpl;
+      import hello.core.order.Order;
+      import hello.core.order.OrderService;
+      import hello.core.order.OrderServiceImpl;
 
       public class OrderApp {
-          public static void main(String[] args) {
+        public static void main(String[] args) {
 
-              //Appconfig로 선택!!
-              AppConfig appConfig = new AppConfig();
-              MemberService memberService = appConfig.memberService();
-              OrderService orderService = appConfig.orderService();
+            //Appconfig로 선택!!
+            AppConfig appConfig = new AppConfig();
+            MemberService memberService = appConfig.memberService();
+            OrderService orderService = appConfig.orderService();
 
-              Long memberId = 1L;
-              Member member = new Member(memberId,"memberA", Grade.VIP);
-              memberService.join(member);
+            Long memberId = 1L;
+            Member member = new Member(memberId,"memberA", Grade.VIP);
+            memberService.join(member);
 
-              Order order = orderService.createOrder(memberId, "itemA", 10000);
+            Order order = orderService.createOrder(memberId, "itemA", 10000);
 
-              System.out.println("order = " + order);
-              System.out.println("order.calculatePrice() = " + order.calculatePrice());
-          }
+            System.out.println("order = " + order);
+            System.out.println("order.calculatePrice() = " + order.calculatePrice());
+        }
       }
       ```
     </div>
