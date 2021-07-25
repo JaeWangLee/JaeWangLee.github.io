@@ -152,5 +152,89 @@ last_modified_at: 2021-07-22 21:30:20
   
 ## 3.3. 관심사의 분리
   
+**애플리케이션**을 **공연**이라 생각해보자.  
+그럼 각각의 **배역**은 **인터페이스**가 될 것이고, 실제 **배우**는 **구현체**가 될 것이다.  
+로미오 역할(인터페이스)을 하는 디카프리오(구현체)가 있다면,  
+디카프리오는 로미오 역할만 충실하면 될 뿐, 줄리엣에 대해서 관여할 필요가 없다.  
   
+그 이유는 공연을 기획하는 **공연 기획자**가 있기 때문인데,  
+어플리케이션도 각각의 구현체가 각각의 인터페이스의 역할에 충실할 수 있도록 기획자가 필요하다.  
+  
+- **AppConfig**의 등장
+  - 어플리케이션 전체 동작 방식을 구성하기 위해, <u>구현 객체를 생성하고, 연결</u>하는 책임을 갖는 별도의 설정 클래스를 만들어 보자.  
+    <details>
+    <summary>코드 보기</summary>
+    <div markdown = "1">
+      ```java  
+      package hello.core;
+
+      import hello.core.discount.FixDiscountPolicy;
+      import hello.core.member.MemberService;
+      import hello.core.member.MemberServiceImpl;
+      import hello.core.member.MemoryMemberRepository;
+      import hello.core.order.OrderService;
+      import hello.core.order.OrderServiceImpl;
+
+      public class AppConfig {
+          public MemberService memberService(){
+              return new MemberServiceImpl(new MemoryMemberRepository());
+          }
+
+          public OrderService orderService(){
+              return new OrderServiceImpl(
+                  new MemoryMemberRepository(),
+                  new FixDiscountPolicy());
+          }
+      }
+      ```
+    </div>
+    </details>  
+  
+  - `AppConfig`는 애플리케이션의 실제 동작에 필요한 <u>구현 객체를 생성</u>한다.  
+    - `MemberServiceImpl`
+    - `MemoryMemberRepository`
+    - `OrderServiceImple`
+    - `FixDiscountPolicy`
+  - `AppConfig`는 생성한 객체 인스턴스의 참조(레퍼런스)를 <u>생성자를 통해서 주입(연결)</u>해준다.  
+    - `MemoryServiceImpl` ➡️ `MemoryMemberRepository`
+    - `OrderServiceImpl` ➡️ `MemoryMemberRepository`, `FixDiscountPolicy`  
+  
+- **MemberServiceImpl** - 생성자 주입
+  
+  <details>
+  <summary>코드 보기</summary>
+  <div markdown = "1">
+    ```java  
+    package hello.core.member;
+
+    public class MemberServiceImpl implements MemberService{
+
+        private final MemberRepository memberRepository;
+
+        public MemberServiceImpl(MemberRepository memberRepository){
+            this.memberRepository = memberRepository;
+        }
+
+        @Override
+        public void join(Member member) {
+            memberRepository.save(member);
+        }
+
+        @Override
+        public Member findMember(Long memberId) {
+            return memberRepository.findById(memberId);
+        }
+    }
+    ```
+  </div>
+  </details>  
+  
+  - 설계 변경으로 `MemberServiceImpl`은 `MemoryMemberRepository`를 의존하지 않는다!  
+  - 단지 `MemoryRepository` 인터페이스만 의존한다.  
+  - `MemberServiceImpl`입장에서 생성자를 통해 어떤 구현 객체가 들어올지(주입될지)는 알 수 없다.  
+  - `MemberServiceImpl`의 생성자를 통해서 어떤 구현 객체를 주입할지는 오직 외부(`AppConfig`)에서 결정된다.  
+  - `MemberServiceImpl`은 이제부터 <u>의존관계에 대한 고민은 외부에 맡기고 실행에만 집중</u>하면 된다.  
+  
+
+
 끝-!😋
