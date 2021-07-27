@@ -656,6 +656,7 @@ last_modified_at: 2021-07-22 21:30:20
 ## 3.9. 스프링으로 전환하기
   
 - **`AppConfig`를 스프링 기반으로 변경**
+  
     </div>
     </details>  
 
@@ -711,6 +712,7 @@ last_modified_at: 2021-07-22 21:30:20
   - 각 메서드에 `@Bean`을 붙여준다. 이렇게 하면 스프링 컨테이너에 스프링 빈으로 등록한다.
   
 - **`MemberApp`에 스프링 컨테이너 적용**
+  
     </div>
     </details>  
 
@@ -749,6 +751,7 @@ last_modified_at: 2021-07-22 21:30:20
     </details>  
     
 - **`OrderApp`에 스프링 컨테이너 적용**
+  
     </div>
     </details>  
 
