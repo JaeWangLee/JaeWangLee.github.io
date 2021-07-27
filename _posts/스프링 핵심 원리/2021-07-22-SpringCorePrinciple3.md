@@ -164,30 +164,31 @@ last_modified_at: 2021-07-22 21:30:20
 어플리케이션 전체 동작 방식을 구성하기 위해, <u>구현 객체를 생성하고, 연결</u>하는 책임을 갖는 별도의 설정 클래스를 만들어 보자.  
 
 - **AppConfig**
+  
     <details>
     <summary>코드 보기</summary>
     <div markdown = "1">
       ```java  
-        package hello.core;
+      package hello.core;
 
-        import hello.core.discount.FixDiscountPolicy;
-        import hello.core.member.MemberService;
-        import hello.core.member.MemberServiceImpl;
-        import hello.core.member.MemoryMemberRepository;
-        import hello.core.order.OrderService;
-        import hello.core.order.OrderServiceImpl;
+      import hello.core.discount.FixDiscountPolicy;
+      import hello.core.member.MemberService;
+      import hello.core.member.MemberServiceImpl;
+      import hello.core.member.MemoryMemberRepository;
+      import hello.core.order.OrderService;
+      import hello.core.order.OrderServiceImpl;
 
-        public class AppConfig {
-            public MemberService memberService(){
-                return new MemberServiceImpl(new MemoryMemberRepository());
-            }
+      public class AppConfig {
+          public MemberService memberService(){
+              return new MemberServiceImpl(new MemoryMemberRepository());
+          }
 
-            public OrderService orderService(){
-                return new OrderServiceImpl(
-                    new MemoryMemberRepository(),
-                    new FixDiscountPolicy());
-            }
-        }
+          public OrderService orderService(){
+              return new OrderServiceImpl(
+                  new MemoryMemberRepository(),
+                  new FixDiscountPolicy());
+          }
+      }
       ```
     </div>
     </details>  
@@ -205,28 +206,28 @@ last_modified_at: 2021-07-22 21:30:20
     <details>
     <summary>코드 보기</summary>
     <div markdown = "1">
-      ```java  
-        package hello.core.member;
+    ```java  
+    package hello.core.member;
 
-        public class MemberServiceImpl implements MemberService{
+    public class MemberServiceImpl implements MemberService{
 
-            private final MemberRepository memberRepository;
+        private final MemberRepository memberRepository;
 
-            public MemberServiceImpl(MemberRepository memberRepository){
-                this.memberRepository = memberRepository;
-            }
-
-            @Override
-            public void join(Member member) {
-                memberRepository.save(member);
-            }
-
-            @Override
-            public Member findMember(Long memberId) {
-                return memberRepository.findById(memberId);
-            }
+        public MemberServiceImpl(MemberRepository memberRepository){
+            this.memberRepository = memberRepository;
         }
-      ```
+
+        @Override
+        public void join(Member member) {
+            memberRepository.save(member);
+        }
+
+        @Override
+        public Member findMember(Long memberId) {
+            return memberRepository.findById(memberId);
+        }
+    }
+    ```
     </div>
     </details>  
   
@@ -252,32 +253,32 @@ last_modified_at: 2021-07-22 21:30:20
   
     <details>
     <summary>코드 보기</summary>
-    <div markdown = "1">
+    <div markdown = "1"> 
       ```java  
-        package hello.core.order;
+      package hello.core.order;
 
-        import hello.core.discount.DiscountPolicy;
-        import hello.core.member.Member;
-        import hello.core.member.MemberRepository;
+      import hello.core.discount.DiscountPolicy;
+      import hello.core.member.Member;
+      import hello.core.member.MemberRepository;
 
-        public class OrderServiceImpl implements OrderService{
+      public class OrderServiceImpl implements OrderService{
 
-            private final MemberRepository memberRepository;
-            private final DiscountPolicy discountPolicy;
+          private final MemberRepository memberRepository;
+          private final DiscountPolicy discountPolicy;
 
-            public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy){
-                this.memberRepository = memberRepository;
-                this.discountPolicy = discountPolicy;
-            }
+          public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy){
+              this.memberRepository = memberRepository;
+              this.discountPolicy = discountPolicy;
+          }
 
-            @Override
-            public Order createOrder(Long memberId, String itemName, int itemPrice) {
-                Member member = memberRepository.findById(memberId);
-                int discountPrice = discountPolicy.discount(member, itemPrice);
+          @Override
+          public Order createOrder(Long memberId, String itemName, int itemPrice) {
+              Member member = memberRepository.findById(memberId);
+              int discountPrice = discountPolicy.discount(member, itemPrice);
 
-                return new Order(memberId, itemName, itemPrice, discountPrice);
-            }
-        }
+              return new Order(memberId, itemName, itemPrice, discountPrice);
+          }
+      }
       ```
     </div>
     </details>  
@@ -296,28 +297,28 @@ last_modified_at: 2021-07-22 21:30:20
     <summary>코드 보기</summary>
     <div markdown = "1">
       ```java  
-        package hello.core;
+      package hello.core;
 
-        import hello.core.member.Grade;
-        import hello.core.member.Member;
-        import hello.core.member.MemberService;
-        import hello.core.member.MemberServiceImpl;
+      import hello.core.member.Grade;
+      import hello.core.member.Member;
+      import hello.core.member.MemberService;
+      import hello.core.member.MemberServiceImpl;
 
-        public class MemberApp {
+      public class MemberApp {
 
-            public static void main(String[] args) {
-                // appconfig로 선택!
-                AppConfig appConfig = new AppConfig();
-                MemberService memberService = appConfig.memberService();
+          public static void main(String[] args) {
+              // appconfig로 선택!
+              AppConfig appConfig = new AppConfig();
+              MemberService memberService = appConfig.memberService();
 
-                Member member = new Member(1L, "memberA", Grade.VIP);
-                memberService.join(member);
+              Member member = new Member(1L, "memberA", Grade.VIP);
+              memberService.join(member);
 
-                Member findMember = memberService.findMember(1L);
-                System.out.println("member = " + member.getName());
-                System.out.println("findMember = " + findMember.getName());
-            }
-        }
+              Member findMember = memberService.findMember(1L);
+              System.out.println("member = " + member.getName());
+              System.out.println("findMember = " + findMember.getName());
+          }
+      }
       ```
     </div>
     </details>  
@@ -325,76 +326,76 @@ last_modified_at: 2021-07-22 21:30:20
 - 사용 클래스 - OrderApp
     <details>
     <summary>코드 보기</summary>
-    <div markdown = "1">
+    <div markdown = "1">  
       ```java  
-        package hello.core;
+      package hello.core;
 
-        import hello.core.member.Grade;
-        import hello.core.member.Member;
-        import hello.core.member.MemberService;
-        import hello.core.member.MemberServiceImpl;
-        import hello.core.order.Order;
-        import hello.core.order.OrderService;
-        import hello.core.order.OrderServiceImpl;
+      import hello.core.member.Grade;
+      import hello.core.member.Member;
+      import hello.core.member.MemberService;
+      import hello.core.member.MemberServiceImpl;
+      import hello.core.order.Order;
+      import hello.core.order.OrderService;
+      import hello.core.order.OrderServiceImpl;
 
-        public class OrderApp {
-          public static void main(String[] args) {
+      public class OrderApp {
+        public static void main(String[] args) {
 
-              //Appconfig로 선택!!
-              AppConfig appConfig = new AppConfig();
-              MemberService memberService = appConfig.memberService();
-              OrderService orderService = appConfig.orderService();
+            //Appconfig로 선택!!
+            AppConfig appConfig = new AppConfig();
+            MemberService memberService = appConfig.memberService();
+            OrderService orderService = appConfig.orderService();
 
-              Long memberId = 1L;
-              Member member = new Member(memberId,"memberA", Grade.VIP);
-              memberService.join(member);
+            Long memberId = 1L;
+            Member member = new Member(memberId,"memberA", Grade.VIP);
+            memberService.join(member);
 
-              Order order = orderService.createOrder(memberId, "itemA", 10000);
+            Order order = orderService.createOrder(memberId, "itemA", 10000);
 
-              System.out.println("order = " + order);
-              System.out.println("order.calculatePrice() = " + order.calculatePrice());
-          }
+            System.out.println("order = " + order);
+            System.out.println("order.calculatePrice() = " + order.calculatePrice());
         }
+      }
       ```
     </div>
     </details>  
 - 테스트 코드 오류 수정
     <details>
     <summary>코드 보기 - MemeberServiceTest</summary>
-    <div markdown = "1">
+    <div markdown = "1">  
       ```java  
-        package hello.core.member;
+      package hello.core.member;
 
-        import hello.core.AppConfig;
-        import org.assertj.core.api.Assertions;
-        import org.junit.jupiter.api.BeforeEach;
-        import org.junit.jupiter.api.Test;
+      import hello.core.AppConfig;
+      import org.assertj.core.api.Assertions;
+      import org.junit.jupiter.api.BeforeEach;
+      import org.junit.jupiter.api.Test;
 
-        public class MemeberServiceTest {
+      public class MemeberServiceTest {
 
-            MemberService memberService;
+          MemberService memberService;
 
-            @BeforeEach
-            public void beforeEach(){
-                AppConfig appConfig = new AppConfig();
-                memberService = appConfig.memberService();
-            }
+          @BeforeEach
+          public void beforeEach(){
+              AppConfig appConfig = new AppConfig();
+              memberService = appConfig.memberService();
+          }
 
-            @Test
-            void join(){
-                //given
-                Member member = new Member(1L, "memberA", Grade.VIP);
+          @Test
+          void join(){
+              //given
+              Member member = new Member(1L, "memberA", Grade.VIP);
 
-                //when
-                memberService.join(member);
-                Member findMember = memberService.findMember(1L);
+              //when
+              memberService.join(member);
+              Member findMember = memberService.findMember(1L);
 
-                //then
-                Assertions.assertThat(member).isEqualTo(findMember);
-                //똑같으면 성공
+              //then
+              Assertions.assertThat(member).isEqualTo(findMember);
+              //똑같으면 성공
 
-            }
-        }
+          }
+      }
       ```
     </div>
     </details>  
@@ -403,39 +404,39 @@ last_modified_at: 2021-07-22 21:30:20
     <summary>코드 보기 - OrderServiceTest</summary>
     <div markdown = "1">
       ```java  
-        package hello.core.order;
+      package hello.core.order;
 
-        import hello.core.AppConfig;
-        import hello.core.member.Grade;
-        import hello.core.member.Member;
-        import hello.core.member.MemberService;
-        import hello.core.member.MemberServiceImpl;
+      import hello.core.AppConfig;
+      import hello.core.member.Grade;
+      import hello.core.member.Member;
+      import hello.core.member.MemberService;
+      import hello.core.member.MemberServiceImpl;
 
-        import org.assertj.core.api.Assertions;
-        import org.junit.jupiter.api.BeforeEach;
-        import org.junit.jupiter.api.Test;
+      import org.assertj.core.api.Assertions;
+      import org.junit.jupiter.api.BeforeEach;
+      import org.junit.jupiter.api.Test;
 
-        public class OrderServiceTest {
-            OrderService orderService;
-            MemberService memberService;
+      public class OrderServiceTest {
+          OrderService orderService;
+          MemberService memberService;
 
-            @BeforeEach
-            void beforeEach(){
-                AppConfig appConfig = new AppConfig();
-                memberService = appConfig.memberService();
-                orderService = appConfig.orderService();
-            }
+          @BeforeEach
+          void beforeEach(){
+              AppConfig appConfig = new AppConfig();
+              memberService = appConfig.memberService();
+              orderService = appConfig.orderService();
+          }
 
-            @Test
-            void createOrder(){
-                Long memberId = 1L;
-                Member member = new Member(memberId, "memberA", Grade.VIP);
-                memberService.join(member);
+          @Test
+          void createOrder(){
+              Long memberId = 1L;
+              Member member = new Member(memberId, "memberA", Grade.VIP);
+              memberService.join(member);
 
-                Order order = orderService.createOrder(memberId, "itemA", 10000);
-                Assertions.assertThat(order.getDiscountPrice()).isEqualTo(1000);
-            }
-        }
+              Order order = orderService.createOrder(memberId, "itemA", 10000);
+              Assertions.assertThat(order.getDiscountPrice()).isEqualTo(1000);
+          }
+      }
       ```
     </div>
     </details>  
@@ -461,37 +462,37 @@ last_modified_at: 2021-07-22 21:30:20
     <summary>코드 보기</summary>
     <div markdown = "1">
       ```java  
-        package hello.core;
+      package hello.core;
 
-        import hello.core.discount.DiscountPolicy;
-        import hello.core.discount.FixDiscountPolicy;
-        import hello.core.member.MemberRepository;
-        import hello.core.member.MemberService;
-        import hello.core.member.MemberServiceImpl;
-        import hello.core.member.MemoryMemberRepository;
-        import hello.core.order.OrderService;
-        import hello.core.order.OrderServiceImpl;
+      import hello.core.discount.DiscountPolicy;
+      import hello.core.discount.FixDiscountPolicy;
+      import hello.core.member.MemberRepository;
+      import hello.core.member.MemberService;
+      import hello.core.member.MemberServiceImpl;
+      import hello.core.member.MemoryMemberRepository;
+      import hello.core.order.OrderService;
+      import hello.core.order.OrderServiceImpl;
 
-        public class AppConfig {
+      public class AppConfig {
 
-            public MemberService memberService(){
-                return new MemberServiceImpl(memberRepository());
-            }
+          public MemberService memberService(){
+              return new MemberServiceImpl(memberRepository());
+          }
 
-            public MemberRepository memberRepository(){
-                return new MemoryMemberRepository();
-            }
+          public MemberRepository memberRepository(){
+              return new MemoryMemberRepository();
+          }
 
-            public DiscountPolicy discountPolicy() {
-                return new FixDiscountPolicy();
-            }
+          public DiscountPolicy discountPolicy() {
+              return new FixDiscountPolicy();
+          }
 
-            public OrderService orderService(){
-                return new OrderServiceImpl(
-                    memberRepository(),
-                    discountPolicy());
-            }
-        }
+          public OrderService orderService(){
+              return new OrderServiceImpl(
+                  memberRepository(),
+                  discountPolicy());
+          }
+      }
       ```
     </div>
     </details>  
@@ -509,39 +510,39 @@ last_modified_at: 2021-07-22 21:30:20
     <summary>코드 보기 - 할인 정책 변경 코드</summary>
     <div markdown = "1">
       ```java  
-        package hello.core;
+      package hello.core;
 
-        import hello.core.discount.DiscountPolicy;
-        import hello.core.discount.FixDiscountPolicy;
-        import hello.core.discount.RateDiscountPolicy;
-        import hello.core.member.MemberRepository;
-        import hello.core.member.MemberService;
-        import hello.core.member.MemberServiceImpl;
-        import hello.core.member.MemoryMemberRepository;
-        import hello.core.order.OrderService;
-        import hello.core.order.OrderServiceImpl;
+      import hello.core.discount.DiscountPolicy;
+      import hello.core.discount.FixDiscountPolicy;
+      import hello.core.discount.RateDiscountPolicy;
+      import hello.core.member.MemberRepository;
+      import hello.core.member.MemberService;
+      import hello.core.member.MemberServiceImpl;
+      import hello.core.member.MemoryMemberRepository;
+      import hello.core.order.OrderService;
+      import hello.core.order.OrderServiceImpl;
 
-        public class AppConfig {
+      public class AppConfig {
 
-            public MemberService memberService(){
-                return new MemberServiceImpl(memberRepository());
-            }
+          public MemberService memberService(){
+              return new MemberServiceImpl(memberRepository());
+          }
 
-            public MemberRepository memberRepository(){
-                return new MemoryMemberRepository();
-            }
+          public MemberRepository memberRepository(){
+              return new MemoryMemberRepository();
+          }
 
-            public DiscountPolicy discountPolicy() {
-                //return new FixDiscountPolicy(); 변경!
-                return new RateDiscountPolicy();
-            }
+          public DiscountPolicy discountPolicy() {
+              //return new FixDiscountPolicy(); 변경!
+              return new RateDiscountPolicy();
+          }
 
-            public OrderService orderService(){
-                return new OrderServiceImpl(
-                    memberRepository(),
-                    discountPolicy());
-            }
-        }
+          public OrderService orderService(){
+              return new OrderServiceImpl(
+                  memberRepository(),
+                  discountPolicy());
+          }
+      }
       ```
     </div>
     </details>  
@@ -653,46 +654,46 @@ last_modified_at: 2021-07-22 21:30:20
     <summary>코드 보기</summary>
     <div markdown = "1">
       ```java  
-        package hello.core;
+      package hello.core;
 
-        import hello.core.discount.DiscountPolicy;
-        import hello.core.discount.FixDiscountPolicy;
-        import hello.core.discount.RateDiscountPolicy;
-        import hello.core.member.MemberRepository;
-        import hello.core.member.MemberService;
-        import hello.core.member.MemberServiceImpl;
-        import hello.core.member.MemoryMemberRepository;
-        import hello.core.order.OrderService;
-        import hello.core.order.OrderServiceImpl;
-        import org.springframework.context.annotation.Bean;
-        import org.springframework.context.annotation.Configuration;
+      import hello.core.discount.DiscountPolicy;
+      import hello.core.discount.FixDiscountPolicy;
+      import hello.core.discount.RateDiscountPolicy;
+      import hello.core.member.MemberRepository;
+      import hello.core.member.MemberService;
+      import hello.core.member.MemberServiceImpl;
+      import hello.core.member.MemoryMemberRepository;
+      import hello.core.order.OrderService;
+      import hello.core.order.OrderServiceImpl;
+      import org.springframework.context.annotation.Bean;
+      import org.springframework.context.annotation.Configuration;
 
-        @Configuration
-        public class AppConfig {
+      @Configuration
+      public class AppConfig {
 
-            @Bean
-            public MemberService memberService(){
-                return new MemberServiceImpl(memberRepository());
-            }
+          @Bean
+          public MemberService memberService(){
+              return new MemberServiceImpl(memberRepository());
+          }
 
-            @Bean
-            public MemberRepository memberRepository(){
-                return new MemoryMemberRepository();
-            }
+          @Bean
+          public MemberRepository memberRepository(){
+              return new MemoryMemberRepository();
+          }
 
-            @Bean
-            public DiscountPolicy discountPolicy() {
-                //return new FixDiscountPolicy();
-                return new RateDiscountPolicy();
-            }
+          @Bean
+          public DiscountPolicy discountPolicy() {
+              //return new FixDiscountPolicy();
+              return new RateDiscountPolicy();
+          }
 
-            @Bean
-            public OrderService orderService(){
-                return new OrderServiceImpl(
-                    memberRepository(),
-                    discountPolicy());
-            }
-        }
+          @Bean
+          public OrderService orderService(){
+              return new OrderServiceImpl(
+                  memberRepository(),
+                  discountPolicy());
+          }
+      }
       ```
     </div>
     </details>  
@@ -706,32 +707,32 @@ last_modified_at: 2021-07-22 21:30:20
     <summary>코드 보기</summary>
     <div markdown = "1">
       ```java  
-        package hello.core;
+      package hello.core;
 
-        import hello.core.member.Grade;
-        import hello.core.member.Member;
-        import hello.core.member.MemberService;
-        import hello.core.member.MemberServiceImpl;
-        import org.springframework.context.ApplicationContext;
-        import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+      import hello.core.member.Grade;
+      import hello.core.member.Member;
+      import hello.core.member.MemberService;
+      import hello.core.member.MemberServiceImpl;
+      import org.springframework.context.ApplicationContext;
+      import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-        public class MemberApp {
+      public class MemberApp {
 
-            public static void main(String[] args) {
-                //AppConfig appConfig = new AppConfig();
-                //MemberService memberService = appConfig.memberService();
+          public static void main(String[] args) {
+              //AppConfig appConfig = new AppConfig();
+              //MemberService memberService = appConfig.memberService();
 
-                ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
-                MemberService memberService = applicationContext.getBean("memberService", MemberService.class);
+              ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
+              MemberService memberService = applicationContext.getBean("memberService", MemberService.class);
 
-                Member member = new Member(1L, "memberA", Grade.VIP);
-                memberService.join(member);
+              Member member = new Member(1L, "memberA", Grade.VIP);
+              memberService.join(member);
 
-                Member findMember = memberService.findMember(1L);
-                System.out.println("member = " + member.getName());
-                System.out.println("findMember = " + findMember.getName());
-            }
-        }
+              Member findMember = memberService.findMember(1L);
+              System.out.println("member = " + member.getName());
+              System.out.println("findMember = " + findMember.getName());
+          }
+      }
       ```
     </div>
     </details>  
@@ -742,39 +743,39 @@ last_modified_at: 2021-07-22 21:30:20
     <summary>코드 보기</summary>
     <div markdown = "1">
       ```java  
-        package hello.core;
+      package hello.core;
 
-        import hello.core.member.Grade;
-        import hello.core.member.Member;
-        import hello.core.member.MemberService;
-        import hello.core.member.MemberServiceImpl;
-        import hello.core.order.Order;
-        import hello.core.order.OrderService;
-        import hello.core.order.OrderServiceImpl;
-        import org.springframework.context.ApplicationContext;
-        import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+      import hello.core.member.Grade;
+      import hello.core.member.Member;
+      import hello.core.member.MemberService;
+      import hello.core.member.MemberServiceImpl;
+      import hello.core.order.Order;
+      import hello.core.order.OrderService;
+      import hello.core.order.OrderServiceImpl;
+      import org.springframework.context.ApplicationContext;
+      import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-        public class OrderApp {
-          public static void main(String[] args) {
+      public class OrderApp {
+        public static void main(String[] args) {
 
-          //AppConfig appConfig = new AppConfig();
-          //MemberService memberService = appConfig.memberService();
-          //OrderService orderService = appConfig.orderService();
+        //AppConfig appConfig = new AppConfig();
+        //MemberService memberService = appConfig.memberService();
+        //OrderService orderService = appConfig.orderService();
 
-          ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
-          MemberService memberService = applicationContext.getBean("memberService", MemberService.class);
-          OrderService orderService = applicationContext.getBean("orderService", OrderService.class);
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
+        MemberService memberService = applicationContext.getBean("memberService", MemberService.class);
+        OrderService orderService = applicationContext.getBean("orderService", OrderService.class);
 
-          Long memberId = 1L;
-          Member member = new Member(memberId,"memberA", Grade.VIP);
-          memberService.join(member);
+        Long memberId = 1L;
+        Member member = new Member(memberId,"memberA", Grade.VIP);
+        memberService.join(member);
 
-          Order order = orderService.createOrder(memberId, "itemA", 20000);
+        Order order = orderService.createOrder(memberId, "itemA", 20000);
 
-          System.out.println("order = " + order);
-          System.out.println("order.calculatePrice() = " + order.calculatePrice());
-          }
+        System.out.println("order = " + order);
+        System.out.println("order.calculatePrice() = " + order.calculatePrice());
         }
+      }
       ```
     </div>
     </details>  
