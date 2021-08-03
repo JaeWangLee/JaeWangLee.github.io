@@ -168,7 +168,7 @@ void springContainer(){
   
 ## 5.4. 싱글톤 방식의 문제점
   
-- <u> **싱글톤 객체는 상태를 유지하게 설계하면 안된다**</u>❗️❗️ 
+- **싱글톤 객체는 상태를 유지하게 설계하면 안된다**❗️❗️ 
   - 객체 인스턴스 하나만 생성해서 공유하는 싱글톤 방식은 하나의 같은 객체 인스턴스를 공유하기 때문에 
 - **무상태(Stateless)** 로 설계해야 한다!
   - 특정 클라이언트에 의존적인 필드가 있으면 안된다.
@@ -178,64 +178,64 @@ void springContainer(){
 - 스프링 빈의 필드에 공유 값을 설정하면 정말 큰 장애가 발생할 수 있음!
   
 **상태를 유지할 경우 발생하는 문제점 예시**  
-- StatefulService  
-```java
-package hello.core.singleton;
+- StatefulService    
+  ```java
+  package hello.core.singleton;
 
-public class StatefulService {
+  public class StatefulService {
 
-    private int price; // 상태를 유지하는 필드
+      private int price; // 상태를 유지하는 필드
 
-    public void order(String name, int price){
-        System.out.println("name = " + name + " price = " + price);
-        this.price = price; // 여기가 문제!
-    }
+      public void order(String name, int price){
+          System.out.println("name = " + name + " price = " + price);
+          this.price = price; // 여기가 문제!
+      }
 
-    public int getPrice(){
-        return price;
-    }
-}
-```
+      public int getPrice(){
+          return price;
+      }
+  }
+  ```
   
-- StatefulServiceTest
-```java
-package hello.core.singleton;
+- StatefulServiceTest  
+  ```java
+  package hello.core.singleton;
 
-import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.Test;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.annotation.Bean;
+  import org.assertj.core.api.Assertions;
+  import org.junit.jupiter.api.Test;
+  import org.springframework.context.ApplicationContext;
+  import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+  import org.springframework.context.annotation.Bean;
 
-public class StatefulServiceTest {
+  public class StatefulServiceTest {
 
-    @Test
-    void StatefulServiceSingleton(){
-        ApplicationContext ac = new AnnotationConfigApplicationContext(TestConfig.class);
-        StatefulService statefulService1 = ac.getBean(StatefulService.class);
-        StatefulService statefulService2 = ac.getBean(StatefulService.class);
+      @Test
+      void StatefulServiceSingleton(){
+          ApplicationContext ac = new AnnotationConfigApplicationContext(TestConfig.class);
+          StatefulService statefulService1 = ac.getBean(StatefulService.class);
+          StatefulService statefulService2 = ac.getBean(StatefulService.class);
 
-        //ThreadA : A사용자 10000원 주문
-        statefulService1.order("userA", 10000);
-        //ThreadB : B사용자 20000원 주문
-        statefulService2.order("userB", 20000);
+          //ThreadA : A사용자 10000원 주문
+          statefulService1.order("userA", 10000);
+          //ThreadB : B사용자 20000원 주문
+          statefulService2.order("userB", 20000);
 
-        //ThreadA : A사용자 주문 금액 조회
-        int price = statefulService1.getPrice();
-        System.out.println("price = " + price);
+          //ThreadA : A사용자 주문 금액 조회
+          int price = statefulService1.getPrice();
+          System.out.println("price = " + price);
 
-        Assertions.assertThat(statefulService1.getPrice()).isEqualTo(20000);
-    }
+          Assertions.assertThat(statefulService1.getPrice()).isEqualTo(20000);
+      }
 
-    static class TestConfig{
+      static class TestConfig{
 
-        @Bean
-        public StatefulService statefulService(){
-            return new StatefulService();
-        }
-    }
-}
-```  
+          @Bean
+          public StatefulService statefulService(){
+              return new StatefulService();
+          }
+      }
+  }
+  ```  
   - ThreadA가 사용자A 코드를 호출하고, ThreadB가 사용자B 코드를 호출한다 가정하자.
   - `StatefulService`의 `price`필드는 공유되며, 특정 클라이언트가 값을 변경하였다.  
   - 사용자A의 주문 금액은 10000원이나 20000원이라는 결과가 나온다.
