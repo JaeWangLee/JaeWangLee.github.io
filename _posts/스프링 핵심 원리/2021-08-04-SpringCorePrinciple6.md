@@ -135,6 +135,56 @@ last_modified_at: 2021-08-04 21:00:20
   
   ![이미지](/assets/images/Spring/스프링_핵심_원리/섹션6/3.png)  
   - 생성자에 파라미터가 많아도 다 찾아서 자동으로 주입한다.
-
   
+## 6.2. 탐색 위치와 기본 스캔 대상
+  
+**탐색할 패키지의 시작 위치 지정**  
+모든 자바 클래스를 다 컴포넌트 스캔하면 시간이 오래 걸린다. 그래서 꼭 필요한 위치부터 탐색하도록 시작 위치를 지정할 수 있다.  
+```java
+  @ComponentScan(
+    basePackages = "hello.core",
+    excludeFilters = @Filter(type = FilterType.ANNOTATION, classes = Configuration.class)
+  )
+```  
+- `basePackages`:탐색할 패키지의 시작 위치를 지정한다.
+  - 이 패키지를 포함하여 하위 패키지를 모두 탐색한다.
+  - ``basePackages = {"hello.core", "hello.service"}` 이렇게 시작 위치를 지정할 수도 있다.
+- `basePackageClasses`: 지정한 클래스의 패키지의 탐색 시작 위치로 지정한다.
+- 만약, 지정하지 않을 경우 `@ComponentScan`이 붙은 설정 정보 클래스의 패키지가 시작 위치가 된다.  
+  
+**권장하는 방법**  
+<u>패키지 위치를 지정하지 않고, 설정 정보 클래스의 위치를 프로젝트 최상단에 두는 것</u>이다.  
+최근 스프링 부트도 이 방법을 기본으로 제공한다.  
+  
+예를 들어, 프로젝트가 다음과 같이 구조를 이룬다면  
+- com.hello
+- com.hello.service
+- com.hello.repository
+`com.hello` ➡️ 프로젝트 시작 루트, 여기에 `AppConfig` 같은 메인 설정 정보를 두고,  
+`@ComponentScan` 애노테이션을 붙이고, `basePackage`지정은 생략한다.  
+  
+이렇게 하면 `com.hello`를 포함한 하위는 모두 자동으로 컴포넌트 스캔의 대상이 된다.  
+그리고 프로젝트 메인 설정 정보는 프로젝트를 대표하는 정보이기 때문에 시작루트에 두는 것이 좋다.  
+> 참고  
+> 스프링 부트를 사용하면 스프링 부트의 대표 시작 정보인 `@SpringBootApplication`를 이 프로젝트 시작 루트에 두는 것이 관례이다.  
+> 그리고 이 설정안에 바로 `@ComponentScan`이 들어있다!  
+  
+**컴포넌트 스캔 기본 대상**  
+컴포넌트 스캔은 `@Component`뿐만 아니라 다음 내용도 추가로 대상에 포함한다.  
+또한 아래의 애노테이션은 스프링이 부가기능을 수행하기도 한다.  
+- `@Component`
+  - 컴포넌트 스캔에서 사용
+- `@Controller`
+  - 스프링 MVC 컨트롤러로써 스프링은 MVC 컨트롤러로 인식함
+- `@Service`
+  - 스프링 비즈니스 로직으로써 핵심 비즈니스 계층을 인식하는데 도움을 줌
+- `@Repository`
+  - 스프링 데이터 접근 계층에서 사용되며, 스프링은 데이터계층의 예외를 스프링 예외로 변환해준다.
+- `@Configuration`
+  - 스프링 설정 정보에서 사용되며, 스프링은 싱글톤을 유지하도록 추가적인 처리를 해준다.
+> 해당 클래스의 소스코드를 보면 `@Component`를 포함하고 있음을 알 수 있다.
+
+
+
+
 끝-!😋
