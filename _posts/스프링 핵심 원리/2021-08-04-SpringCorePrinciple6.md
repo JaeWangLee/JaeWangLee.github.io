@@ -183,8 +183,165 @@ last_modified_at: 2021-08-04 21:00:20
 - `@Configuration`
   - 스프링 설정 정보에서 사용되며, 스프링은 싱글톤을 유지하도록 추가적인 처리를 해준다.
 > 해당 클래스의 소스코드를 보면 `@Component`를 포함하고 있음을 알 수 있다.
+  
+## 6.3. 필터
+  
+- `includeFilters` : 컴포넌트 스캔 대상을 추가로 지정한다.
+- `excludeFilters` : 컴포넌트 스캔에서 제외할 대상을 지정한다.
+  
+**컴포넌트 스캔 대상에 추가할 애노테이션**  
+```java
+  package hello.core.scan.filter;
+  import java.lang.annotation.*;
+  @Target(ElementType.TYPE)
+  @Retention(RetentionPolicy.RUNTIME)
+  @Documented
+  public @interface MyIncludeComponent {
+  }
+```
+  
+**컴포넌트 스캔 대상에서 제외할 애노테이션**  
+```java
+  package hello.core.scan.filter;
+  import java.lang.annotation.*;
+  @Target(ElementType.TYPE)
+  @Retention(RetentionPolicy.RUNTIME)
+  @Documented
+  public @interface MyExcludeComponent {
+  }
+```
+  
+**컴포넌트 스캔 대상에 추가할 클래스**  
+```java
+  package hello.core.scan.filter;
+  @MyIncludeComponent
+  public class BeanA {
+  }
+```  
+  - `@MyIncludeComponent` 적용하였음
+  
+**컴포넌트 스캔 대상에서 제외할 클래스**  
+```java
+  package hello.core.scan.filter;
+  @MyExcludeComponent
+  public class BeanB {
+  }
+```  
+  - `@MyExcludeComponent` 적용하였음
+  
+**설정 정보와 전체 테스트 코드**  
+```java
+  package hello.core.scan.filter;
+  import org.junit.jupiter.api.Assertions;
+  import org.junit.jupiter.api.Test;
+  import org.springframework.beans.factory.NoSuchBeanDefinitionException;
+  import org.springframework.context.ApplicationContext;
+  import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+  import org.springframework.context.annotation.ComponentScan;
+  import org.springframework.context.annotation.Configuration;
+  import org.springframework.context.annotation.FilterType;
+  import static org.assertj.core.api.Assertions.assertThat;
+  import static org.springframework.context.annotation.ComponentScan.Filter;
+  public class ComponentFilerAppConfigTest {
 
+    @Test
+    void filterScan() {
+      ApplicationContext ac = new AnnotationConfigApplicationContext(ComponentFilterAppConfig.class);
+      BeanA beanA = ac.getBean("beanA", BeanA.class);
+      assertThat(beanA).isNotNull();
+      Assertions.assertThrows(
+              NoSuchBeanDefinitionException.class,
+              () -> ac.getBean("beanB", BeanB.class));
+    }
 
-
-
+    @Configuration
+    @ComponentScan(
+            includeFilters = @Filter(type = FilterType.ANNOTATION, classes = MyIncludeComponent.class),
+            excludeFilters = @Filter(type = FilterType.ANNOTATION, classes = MyExcludeComponent.class)
+    )
+    static class ComponentFilterAppConfig {
+    }
+```  
+  
+```java
+  @ComponentScan(
+    includeFilters = @Filter(type = FilterType.ANNOTATION, classes = MyIncludeComponent.class),
+    excludeFilters = @Filter(type = FilterType.ANNOTATION, classes = MyExcludeComponent.class)
+  )
+```  
+  - `includeFilter`에 `MyIncludeComponent` 애노테이션을 추가해서 BeanA가 스프링 빈에 등록된다.
+  - `excludeFilter`에 `MyExcludeComponent` 애노테이션을 추가해서 BeanB는 스프링 빈에 등록되지 않는다.
+  
+#### FilterType 옵션
+  
+FilterType은 총 5가지가 있다.  
+- ANNOTATION : 기본값, 애노테이션을 인식해서 동작한다.
+  - ex) `org.example.SomeAnnotation`
+- ASSIGNABLE_TYPE : 지정한 타입과 자식 타입을 인식해서 동작한다. 
+  - ex) `org.example.SomeClass`
+- ASPECTJ: AspectJ 패턴 사용
+  - ex) `org.example..*Service+`
+- REGEX: 정규 표현식
+  - ex) `org\.example\.Default.*`
+- CUSTOM: TypeFilter 이라는 인터페이스를 구현해서 처리 
+  - ex) `org.example.MyTypeFilter`
+  
+예를 들어서 BeanA도 빼고 싶으면 다음과 같이 추가하면 된다.  
+```java
+  @ComponentScan(
+    includeFilters = { 
+      @Filter(type = FilterType.ANNOTATION, classes = MyIncludeComponent.class),
+     },
+    excludeFilters = {
+          @Filter(type = FilterType.ANNOTATION, classes = MyExcludeComponent.class),
+          @Filter(type = FilterType.ASSIGNABLE_TYPE, classes = BeanA.class)
+    }
+  )
+```  
+> **참고**  
+> `@Component`면 충분하기 때문에, `includeFilters`를 사용할 일은 거의 없다.   
+> `excludeFilters`는 여러가지 이유로 간혹 사용할 때가 있지만 많지는 않다.  
+> 특히 최근 스프링 부트는 컴포넌트 스캔을 기본으로 제공하는데,  
+> 옵션을 변경하면서 사용하기 보다는 스프링의 기본 설정에 최대한 맞추어 사용하는 것을 권장하고, 선호하는 편이다.
+  
+## 6.4. 중복 등록과 충돌
+  
+두가지 Case에서 같은 이름이 등록될 수 있다.  
+1. 자동 빈 등록 vs 자동 빈 등록
+2. 수동 빈 등록 vs 수동 빈 등록
+  
+**자동 빈 등록 vs 자동 빈 등록**  
+- 컴포넌트 스캔에 의해 자동으로 스프링 빈이 등록되는데, 그 이름이 같은 경우 스프링은 오류를 발생시킨다.
+  - `ConflictingBeanDefinitionException` 예외 발생
+  
+**수동 빈 등록 vs 자동 빈 등록**
+ - 이 경우에는 수동 빈 등록이 우선권을 갖고 자동 빈을 오버라이딩 해버린다.
+  
+```java
+  @Component
+    public class MemoryMemberRepository implements MemberRepository {}
+```  
+  
+```java
+  @Configuration
+  @ComponentScan(
+    excludeFilters = @Filter(type = FilterType.ANNOTATION, classes = Configuration.class)
+    )
+  public class AutoAppConfig {
+    @Bean(name = "memoryMemberRepository")
+    public MemberRepository memberRepository() {
+        return new MemoryMemberRepository();
+    }
+  }
+```  
+  
+**수동 빈 등록 시 남는 로그**
+```
+  Overriding bean definition for bean 'memoryMemberRepository' with a different 
+  definition: replacing
+```
+  
+- 수동이 우선권을 갖는 게 좋을 수 있지만, 의도하지 않았다면 정말 잡기 어려운 버그가 발생한다.
+- 그래서 스프링 부트에서는 수동과 자동의 충돌이 나면 오류가 발생하도록 기본값이 설정되있다. 
+  
 끝-!😋
