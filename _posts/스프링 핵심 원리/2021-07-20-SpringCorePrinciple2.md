@@ -4,7 +4,7 @@ excerpt: "스프링 입문 - 김영한 님의 강의 내용입니다."
 toc: true
 toc_sticky: true
 categories:
-  - Test
+  - Spring
 tags:
   - Backend
   - Java
