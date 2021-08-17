@@ -126,5 +126,43 @@ public class OrderServiceImpl implements OrderService {
 > 참고 : 의존관계 자동 주입은 스프링ㄹ 컨테이너가 관리하는 스프링 빈이어야 동작한다.  
 > 스프링 빈이 아닌 `Member` 같은 클래스에서 `@Autowired`코드를 적용해도 아무 기능도 동작하지 않는다.  
   
+## 7.2. 옵션 처리
+  
+주입할 스프링 빈이 없어도 동작해야 할 때가 있다.  
+그런데 `@Autowired`만 사용하면 `required` 옵션의 기본 값이 `true`라 <u>자동 주입 대상이 없으면 오류가 발생한다.</u>  
+  
+자동 주입 대상을 옵션으로 처리하는 방법은 다음과 같다.  
+- `@Autowired(required=false)` : 자동 주입할 대상이 없으면 수정자 메서드 자체가 호출이 안됨
+- `org.springframework.lang.@Nullable` : 자동 주입할 대상이 없으면 Null이 입력된다.
+- `Optional<>` : 자동 주입할 대상이 없으면 `Optional.empty`가 입력된다.  
+  
+```java
+//1.호출 안됨
+@Autowired(required = false)
+public void setNoBean1(Member member) {
+  System.out.println("setNoBean1 = " + member);
+}
+
+//2.null 호출
+@Autowired
+public void setNoBean2(@Nullable Member member) {
+  System.out.println("setNoBean2 = " + member);
+}
+
+//3.Optional.empty 호출
+@Autowired(required = false)
+public void setNoBean3(Optional<Member> member) {
+  System.out.println("setNoBean3 = " + member);
+}
+```  
+- **Member는 스프링 빈이 아니다.**  
+- `setNoBean1()`은 `@Autowired(required=false)`이므로 호출 자체가 안된다.
+  
+**출력 결과**  
+```java
+setNoBean2 = null
+setNoBean3 = Optional.empty
+```
+
 
 끝-!😋
