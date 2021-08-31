@@ -248,5 +248,84 @@ public class OrderServiceImpl implements OrderService {
 - 생성자 주입 방식을 선택하는 이유는 여러가지가 있지만, 프레임워크에 의존하지 않고, 순수한 자바 언어의 특징을 잘 살리는 방법이기도 하다.
 - 기본으로 생성자 주입을 사용하고, 필수 값이 아닌 경우에는 수정자 주입 방식을 옵션으로 부여하면 된다. 생성자 주입과 수정자 주입을 동시에 사용할 수 있다.
 - 항상 생성자 주입을 선택해라! 그리고 가끔 옵션이 필요하면 수정자 주입을 선택해라. 필드 주입은 사용하지 않는게 좋다.
-   
+  
+## 7.4. 롬복과 최신 트렌드
+  
+막상 개발을 해보면, 대부분이 다 불면이라 생성자에 final 키워드를 사용하게 된다.  
+- 그런데 문제는 생성자도 만들고, 주입 받은 값을 대입해야하고.. 귀찮다.
+  
+롬복을 적용해서 다음의 기본 코드를 최적화 해보자  
+- 롬복 라이브러리가 제공하는 `@RequiredArgsConstructor`기능을 사용하면 final이 붙은 필드를 모아 생성자를 자동으로 만들어준다.
+  
+**기본 코드**
+  
+```java
+  @Component
+  public class OrderServiceImpl implements OrderService {
+
+  private final MemberRepository memberRepository;
+  private final DiscountPolicy discountPolicy;
+
+  @Autowired
+  public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+    this.memberRepository = memberRepository;
+    this.discountPolicy = discountPolicy;
+  }
+}
+```  
+  
+**최종 결과 코드**  
+  
+```java
+  @Component
+  @RequiredArgsConstructor
+  public class OrderServiceImpl implements OrderService {
+    private final MemberRepository memberRepository;
+    private final DiscountPolicy discountPolicy;
+}
+```  
+  
+이 최종결과 코드와 이전의 코드는 완전히 동일하다.  
+롬복이 자바의 애노테이션 프로세서라는 기능을 이용해 컴파일 시점에서 생성자 코드를 자동으로 생성한다.  
+실제 class를 열어보면 다음과 같은 코드가 추가되어 있는 것을 확인할 수 있다.  
+  
+```java
+public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy
+  discountPolicy) {
+      this.memberRepository = memberRepository;
+      this.discountPolicy = discountPolicy;
+  }
+```
+  
+> **정리**  
+> 최근에는 생성자를 딱 1개 두고, `@Autowired`를 생략하는 방법을 주로 사용한다.  
+> 여기에 Lombok 라이브러리의 `@RequiredArgsConstructor`를 함께 사용하면 기능은 다 제공하면서, 코드를 깔끔하게 사용할 수 있다.  
+  
+## 7.5 조회 빈이 2개 이상인 경우
+  
+`@Autowired`는 타입(Type)으로 조회한다.  
+```java
+@Autowired
+private DiscountPolicy discountPolicy
+```  
+  
+타입으로 조회하기 때문에, 마치 다음 코드와 유사하게 동작한다.(실제로는 더 많은 기능을 제공함!)  
+`ac.getBean(DiscountPolicy.class)`  
+  
+스프링 빈 조회에서 학습했듯이 타입으로 조회하면 선택된 2개 이상일 때 문제가 발생한다.  
+`DiscountPolicy`의 하위 타입인 `FixDiscountPolicy`, `RateDiscountPolicy` 둘다 스프링 빈으로 설정해보자.  
+  
+그러면.. `NoUniqueBeanDefinitionException`오류가 발생한다.  
+```
+  NoUniqueBeanDefinitionException: No qualifying bean of type
+  'hello.core.discount.DiscountPolicy' available: expected single matching bean
+  but found 2: fixDiscountPolicy,rateDiscountPolicy
+```  
+위와 같이 2개의 빈이 발견되었다고 알려준다.  
+이때 하위 타입 지정하여 해결할 수 있으나, DIP 위반 및 유연성이 떨어진다.  
+따라서 다른 해결방법에 대해 알아보자.  
+  
+  
+
+
 끝-!😋
