@@ -1,5 +1,6 @@
 ---
 title: "[클래스의 이해] 15. 객체 확인"
+published: false
 excerpt: "Java 객체확인에 대해 알아보자"
 toc: true
 toc_sticky: true

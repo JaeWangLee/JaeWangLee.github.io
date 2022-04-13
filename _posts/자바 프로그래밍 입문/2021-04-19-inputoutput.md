@@ -1,5 +1,6 @@
 ---
 title: "[자바 입문] 27. 입력과 출력"
+published: false
 excerpt: "Java 입력과 출력에 대해 알아보자"
 toc: true
 toc_sticky: true

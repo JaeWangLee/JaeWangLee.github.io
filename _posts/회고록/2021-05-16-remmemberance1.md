@@ -1,5 +1,6 @@
 ---
 title: "첫번째 회고록 - 블로그를 시작하며"
+published: false
 excerpt: "출장 50일차"
 toc: true
 toc_sticky: true

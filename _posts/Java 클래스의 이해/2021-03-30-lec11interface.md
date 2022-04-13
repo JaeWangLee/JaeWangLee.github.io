@@ -1,5 +1,6 @@
 ---
 title: "[클래스의 이해] 11. 인터페이스(Interface)란"
+published: false
 excerpt: "Java Interface에 대해 알아보자"
 toc: true
 toc_sticky: true 

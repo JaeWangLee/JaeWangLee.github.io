@@ -1,5 +1,6 @@
 ---
 title: "세번째 회고록 - 이건 참회록"
+published: false
 excerpt: "앞으로의 계획.."
 toc: true
 toc_sticky: true

@@ -1,5 +1,6 @@
 ---
 title: "[자바 입문] 28. 네트워킹"
+published: false
 excerpt: "Java 네트워킹에 대해 알아보자"
 toc: true
 toc_sticky: true

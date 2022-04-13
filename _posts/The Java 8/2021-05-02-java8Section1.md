@@ -1,5 +1,6 @@
 ---
 title: "[더 자바8] 섹션1. 함수형 인터페이스와 람다"
+published: false
 excerpt: "백기선의 더 자바, Java8 내용입니다."
 toc: true
 toc_sticky: true

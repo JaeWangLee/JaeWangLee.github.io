@@ -1,5 +1,6 @@
 ---
 title: "[클래스의 이해] 6. 접근제한자란"
+published: false
 excerpt: "Java Access Modifier에 대해 알아보자"
 toc: true
 toc_sticky: true

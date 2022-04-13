@@ -1,5 +1,6 @@
 ---
 title: "[웹 백엔드] 웹서버"
+published: false
 excerpt: "웹서버/WAS에 대해 알아보자"
 toc: true
 toc_sticky: true

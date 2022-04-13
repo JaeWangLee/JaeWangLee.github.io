@@ -1,5 +1,6 @@
 ---
 title: "[클래스의 이해] 8. 오버라이딩(Overriding)이란"
+published: false
 excerpt: "Java Overriding에 대해 알아보자"
 toc: true
 toc_sticky: true

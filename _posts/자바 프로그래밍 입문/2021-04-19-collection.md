@@ -1,5 +1,6 @@
 ---
 title: "[자바 입문] 25. Collections"
+published: false
 excerpt: "Java Collections에 대해 알아보자"
 toc: true
 toc_sticky: true

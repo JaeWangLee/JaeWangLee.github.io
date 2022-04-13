@@ -1,5 +1,6 @@
 ---
 title: "두번째 회고록 - 중국 출장 끝, 앞으로의 계획"
+published: false
 excerpt: "91일 간의 출장의 끝"
 toc: true
 toc_sticky: true

@@ -1,5 +1,6 @@
 ---
 title: "[자바 입문] 26. 예외처리"
+published: false
 excerpt: "Java 예외처리에 대해 알아보자"
 toc: true
 toc_sticky: true

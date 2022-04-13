@@ -1,5 +1,6 @@
 ---
 title: "[클래스의 이해] 12. 다형성(Polymorphism)이란"
+published: false
 excerpt: "Java polymorphism에 대해 알아보자"
 toc: true
 toc_sticky: true

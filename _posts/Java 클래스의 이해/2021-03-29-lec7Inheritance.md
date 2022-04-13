@@ -1,5 +1,6 @@
 ---
 title: "[클래스의 이해] 7. 상속(Inheritance)이란"
+published: false
 excerpt: "Java Inheritance에 대해 알아보자"
 toc: true
 toc_sticky: true
