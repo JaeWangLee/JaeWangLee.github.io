@@ -1,5 +1,6 @@
 ---
 title: "[실전 JSP] 1. 웹 프로그램 개요"
+published: false
 excerpt: "웹 프로그램에 대해 알아보자"
 toc: true
 toc_sticky: true

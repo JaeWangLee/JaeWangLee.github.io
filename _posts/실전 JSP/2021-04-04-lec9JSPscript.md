@@ -1,5 +1,6 @@
 ---
 title: "[실전 JSP] 9. JSP 스크립트"
+published: false
 excerpt: "JSP 스크립트에 대해 알아보자"
 toc: true
 toc_sticky: true

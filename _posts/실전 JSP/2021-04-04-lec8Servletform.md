@@ -1,5 +1,6 @@
 ---
 title: "[실전 JSP] 8. form 데이터 처리"
+published: false
 excerpt: "Servlet form에 대해 알아보자"
 toc: true
 toc_sticky: true

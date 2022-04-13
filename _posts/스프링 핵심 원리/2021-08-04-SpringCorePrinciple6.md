@@ -1,5 +1,6 @@
 ---
 title: "[스프링 핵심 원리 - 기본편] 섹션6. 컴포넌트 스캔"
+published: false
 excerpt: "스프링 입문 - 김영한 님의 강의 내용입니다."
 toc: true
 toc_sticky: true

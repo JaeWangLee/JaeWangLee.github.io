@@ -1,5 +1,6 @@
 ---
 title: "[실전 JSP] 7. Servlet Life Cycle"
+published: false
 excerpt: "Servlet Life Cycle에 대해 알아보자"
 toc: true
 toc_sticky: true

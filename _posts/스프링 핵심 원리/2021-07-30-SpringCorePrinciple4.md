@@ -1,5 +1,6 @@
 ---
 title: "[스프링 핵심 원리 - 기본편] 섹션4. 스프링 컨테이너와 스프링 빈"
+published: false
 excerpt: "스프링 입문 - 김영한 님의 강의 내용입니다."
 toc: true
 toc_sticky: true

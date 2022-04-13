@@ -1,5 +1,6 @@
 ---
 title: "[실전 JSP] 10. JSP request, response"
+published: false
 excerpt: "JSP request, response에 대해 알아보자"
 toc: true
 toc_sticky: true
